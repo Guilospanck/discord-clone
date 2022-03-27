@@ -4,7 +4,6 @@ module.exports = {
   collectCoverageFrom: [
     '<rootDir>/src/**/*.tsx',
     '<rootDir>/src/**/*.ts',
-    '<rootDir>/src/**/styles.ts',
   ],
   coverageDirectory: 'coverage',
   testEnvironment: 'jsdom',
