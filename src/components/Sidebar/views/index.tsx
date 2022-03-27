@@ -13,12 +13,12 @@ export interface SideBarViewProps {
 
 export const SidebarView = ({ viewModel }: SideBarViewProps) => {
   return (
-    <Sidebar>
+    <Sidebar data-testid="sidebar-component">
       {
         viewModel.servers.map((item: number, index: number) =>
           (
           <LinkStyled key={`${item}-${index}`} height={48} width={48}>
-            <DiscordSVG width={42} height={42} />
+            <DiscordSVG width={42} height={42} />            
           </LinkStyled>
           )
         )
