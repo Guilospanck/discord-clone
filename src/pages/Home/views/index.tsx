@@ -1,22 +1,22 @@
 import React from 'react'
-import { IuseHomeViewModel } from '../viewModels/homeViewModel'
+import { IUseHomeViewModel } from '../viewModels/homeViewModel'
 
 import {
   Container,
-  Sidebar,
   Content,
   Section,
   Article
 } from './styles'
 
-export interface HomeViewInterface {
-  viewModel: IuseHomeViewModel
+export type HomeViewProps = {
+  viewModel: IUseHomeViewModel,
+  ChannelsComponent: React.FC
 }
 
-export const HomeView = ({ viewModel: IuseHomeViewModel }: HomeViewInterface) => {
+export const HomeView = ({ viewModel, ChannelsComponent }: HomeViewProps) => {
   return (
     <Container>
-      <Sidebar></Sidebar>
+      <ChannelsComponent></ChannelsComponent>
       <Content>
         <Section></Section>
         <Article></Article>

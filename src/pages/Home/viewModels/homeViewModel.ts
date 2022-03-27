@@ -1,5 +1,5 @@
-export interface IuseHomeViewModel {}
+export interface IUseHomeViewModel {}
 
-export const useHomeViewModel = (): IuseHomeViewModel => {
+export const useHomeViewModel = (): IUseHomeViewModel => {
   return 0
 }
