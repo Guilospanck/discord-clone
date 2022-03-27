@@ -18,7 +18,7 @@ export const SidebarView = ({ viewModel }: SideBarViewProps) => {
         viewModel.servers.map((item: number, index: number) =>
           (
           <LinkStyled key={`${item}-${index}`} height={48} width={48}>
-            <DiscordSVG width={42} height={42} />            
+            <DiscordSVG width={42} height={42} />
           </LinkStyled>
           )
         )

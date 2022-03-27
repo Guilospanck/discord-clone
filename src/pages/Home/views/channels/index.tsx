@@ -2,7 +2,15 @@ import React from 'react'
 import { IUseChannelsViewModel } from '../../viewModels/channelsViewModel'
 
 import {
-  Sidebar
+  Container,
+  Sidebar,
+  Section,
+  Avatar,
+  UserNameAndTag,
+  UserName,
+  UserTag,
+  UserOptions,
+  OptionsButton
 } from './styles'
 
 type ChannelsViewProps = {
@@ -11,6 +19,20 @@ type ChannelsViewProps = {
 
 export const ChannelsView = ({ viewModel }: ChannelsViewProps) => {
   return (
-    <Sidebar />
+    <Container>
+      <Sidebar />
+      <Section>
+        <Avatar></Avatar>
+        <UserNameAndTag>
+          <UserName>guilospanck</UserName>
+          <UserTag>#1042</UserTag>
+        </UserNameAndTag>
+        <UserOptions>
+          <OptionsButton></OptionsButton>
+          <OptionsButton></OptionsButton>
+          <OptionsButton></OptionsButton>
+        </UserOptions>
+      </Section>
+    </Container>
   )
 }
