@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-const SIDEBAR_BG_COLOR = "#202225";
+const SIDEBAR_BG_COLOR = '#202225'
 
 export const Sidebar = styled.nav`
   display: flex;
@@ -10,4 +10,4 @@ export const Sidebar = styled.nav`
   width: 72px;
   height: 100%;
 
-`;
+`

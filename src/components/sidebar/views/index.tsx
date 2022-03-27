@@ -1,11 +1,9 @@
-import React from "react";
+import React from 'react'
 
 import {
   Sidebar
-} from './styles';
+} from './styles'
 
 export const SidebarView = () => {
-
   return <Sidebar />
-
-};
+}

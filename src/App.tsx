@@ -2,7 +2,7 @@ import React from 'react'
 
 import { AppRoute } from './Route'
 
-function App() {
+function App () {
   return (
     <AppRoute />
   )

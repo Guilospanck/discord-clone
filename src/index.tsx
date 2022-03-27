@@ -1,12 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import { GlobalStyle } from './globals';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+import { Sidebar } from './components/sidebar'
+import { GlobalStyle, Container } from './globals'
 
 ReactDOM.render(
   <React.StrictMode>
     <GlobalStyle />
-    <App />
+    <Container>
+      <Sidebar />
+      <App />
+    </Container>
   </React.StrictMode>,
   document.getElementById('root')
 )
