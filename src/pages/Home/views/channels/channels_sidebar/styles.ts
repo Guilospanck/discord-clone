@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Sidebar = styled.nav`
+export const Container = styled.nav`
   display: flex;  
   flex: 1 1 auto;
   flex-direction: column;

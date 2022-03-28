@@ -5,13 +5,15 @@ import {
 } from './styles'
 
 type ChannelsViewProps = {
+  ChannelsServerTitleComponent: React.FC,
   ChannelsSidebarComponent: React.FC,
   ChannelsSectionComponent: React.FC
 }
 
-export const ChannelsView = ({ ChannelsSectionComponent, ChannelsSidebarComponent }: ChannelsViewProps) => {
+export const ChannelsView = ({ ChannelsServerTitleComponent, ChannelsSectionComponent, ChannelsSidebarComponent }: ChannelsViewProps) => {
   return (
     <Container>
+      <ChannelsServerTitleComponent />
       <ChannelsSidebarComponent />
       <ChannelsSectionComponent />
     </Container>

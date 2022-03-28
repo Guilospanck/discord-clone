@@ -99,4 +99,6 @@ export const OptionsButton = styled.button`
   border-radius: 4px;
   color: ${TAG_COLOR};
 
+  cursor: pointer;
+
 `

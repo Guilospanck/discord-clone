@@ -2,15 +2,17 @@ import React from 'react'
 import { UseChannelsSidebarViewModelReturnType } from '~/pages/Home/viewModels/channelsSidebarViewModel'
 
 import {
-  Sidebar
+  Container
 } from './styles'
 
 type ChannelsSidebarViewProps = {
-  viewModel: UseChannelsSidebarViewModelReturnType
+  viewModel: UseChannelsSidebarViewModelReturnType,
 }
 
 export const ChannelsSidebarView = ({ viewModel }: ChannelsSidebarViewProps) => {
   return (
-    <Sidebar />
+    <Container>
+
+    </Container>
   )
 }
