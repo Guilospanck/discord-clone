@@ -44,15 +44,21 @@ export const Avatar = styled.button`
   cursor: pointer;
 
   border: none;
-  background: 1px solid red;
+  background: none;
   outline: none;
 
-  border-radius: 15px;
+  border-radius: 30px;
 
   width: 32px;
   height: 32px;
 
   margin-right: 8px;
+  overflow: hidden;
+
+  & > img {
+    transform: translateX(-6px);
+  }
+
 `
 
 export const UserNameAndTag = styled.div`
@@ -101,7 +107,7 @@ export const OptionsButton = styled.button`
   display: flex;
   outline: none;
   border: none;
-  background: 1px solid red;
+  background: none;
 
   line-height: 0;
   width: 32px;
