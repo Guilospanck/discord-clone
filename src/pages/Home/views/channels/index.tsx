@@ -1,20 +1,18 @@
 import React from 'react'
-import { IUseChannelsViewModel } from '../../viewModels/channelsViewModel'
 
 import {
-  Container,
-  Sidebar
+  Container
 } from './styles'
 
 type ChannelsViewProps = {
-  viewModel: IUseChannelsViewModel,
+  ChannelsSidebarComponent: React.FC,
   ChannelsSectionComponent: React.FC
 }
 
-export const ChannelsView = ({ viewModel, ChannelsSectionComponent }: ChannelsViewProps) => {
+export const ChannelsView = ({ ChannelsSectionComponent, ChannelsSidebarComponent }: ChannelsViewProps) => {
   return (
     <Container>
-      <Sidebar />
+      <ChannelsSidebarComponent />
       <ChannelsSectionComponent />
     </Container>
   )

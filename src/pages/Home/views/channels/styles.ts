@@ -9,12 +9,3 @@ export const Container = styled.div`
   width: 240px;
   background-color: ${SIDEBAR_BG_COLOR};
 `
-
-export const Sidebar = styled.nav`
-  display: flex;  
-  flex: 1 1 auto;
-  flex-direction: column;
-  width: 100%;
-
-  justify-content: flex-start;
-`

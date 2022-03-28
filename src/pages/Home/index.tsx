@@ -4,22 +4,29 @@ import React from 'react'
 import { HomeView } from './views'
 import { ChannelsView } from './views/channels'
 import { ChannelsSectionView } from './views/channels/channels_section'
+import { ChannelsSidebarView } from './views/channels/channels_sidebar'
 
 /** ViewModels */
 import { useHomeViewModel } from './viewModels/homeViewModel'
-import { useChannelsViewModel } from './viewModels/channelsViewModel'
 import { useChannelsSectionViewModel } from './viewModels/channelsSectionViewModel'
+import { useChannelsSidebarViewModel } from './viewModels/channelsSidebarViewModel'
 
 /** Components */
 const ChannelsSectionComponent = () => {
   const viewModel = useChannelsSectionViewModel()
-
   return <ChannelsSectionView viewModel={viewModel} />
 }
 
+const ChannelsSidebarComponent = () => {
+  const viewModel = useChannelsSidebarViewModel()
+  return <ChannelsSidebarView viewModel={viewModel} />
+}
+
 const ChannelsComponent = () => {
-  const viewModel = useChannelsViewModel()
-  return <ChannelsView viewModel={viewModel} ChannelsSectionComponent={ChannelsSectionComponent} />
+  return <ChannelsView
+    ChannelsSectionComponent={ChannelsSectionComponent}
+    ChannelsSidebarComponent={ChannelsSidebarComponent}
+  />
 }
 
 export const Home = () => {
