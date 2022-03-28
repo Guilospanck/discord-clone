@@ -8,9 +8,11 @@ import { IUseSidebarViewModel } from '../viewModels/sidebarViewModel'
 function makeSut () {
   const viewModel = (): IUseSidebarViewModel => {
     const servers = [1, 2, 3]
+    const DISCORD_LOGO_COLOR = '#5865F2'
 
     return {
-      servers
+      servers,
+      DISCORD_LOGO_COLOR
     }
   }
 
@@ -31,7 +33,8 @@ describe('Sidebar component tests', () => {
     // arrange
     const testId = 'sidebar-component'
     const attributes = ['data-testid', 'class']
-    const linkStyledComponentsAttributes = ['width', 'height', 'color', 'data-testid', 'class']
+    const linkStyledComponentsAttributesDiscordIcon = ['width', 'height', 'color', 'data-testid', 'class']
+    const linkStyledComponentsAttributesOtherServers = ['width', 'height', 'data-testid', 'class']
     const linkedStyledWidthAttribute = 48
     const linkedStyledHeightAttribute = 48
 
@@ -46,7 +49,11 @@ describe('Sidebar component tests', () => {
 
     for (let i = 0; i < 3; i++) {
       expect(sut.getByTestId(testId).children.item(i).nodeName).toEqual('A') // <a /> tag
-      expect(sut.getByTestId(testId).children.item(i).getAttributeNames()).toEqual(linkStyledComponentsAttributes)
+      if (i === 0) {
+        expect(sut.getByTestId(testId).children.item(i).getAttributeNames()).toEqual(linkStyledComponentsAttributesDiscordIcon)
+      } else {
+        expect(sut.getByTestId(testId).children.item(i).getAttributeNames()).toEqual(linkStyledComponentsAttributesOtherServers)
+      }
       expect(sut.getByTestId(testId).children.item(i).getAttribute('width')).toEqual(linkedStyledWidthAttribute.toString())
       expect(sut.getByTestId(testId).children.item(i).getAttribute('height')).toEqual(linkedStyledHeightAttribute.toString())
     }
