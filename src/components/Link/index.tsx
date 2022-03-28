@@ -8,7 +8,8 @@ type ButtonProps = {
   width: number,
   height: number,
   backgroundColor?: string,
-  borderRadius?: number
+  borderRadius?: number,
+  color?: string
 }
 
 export const LinkStyled: FunctionComponent<ButtonProps> = (props) => {
@@ -18,6 +19,7 @@ export const LinkStyled: FunctionComponent<ButtonProps> = (props) => {
       height={props.height}
       backgroundColor={props.backgroundColor}
       borderRadius={props.borderRadius}
+      color={props.color}
       data-testid="link-container"
     >
       {props.children}

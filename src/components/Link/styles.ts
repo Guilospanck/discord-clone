@@ -5,6 +5,7 @@ type LinkProps = {
   height: number,
   backgroundColor?: string
   borderRadius?: number
+  color?: string
 }
 
 export const LinkContainer = styled.a<LinkProps>`
@@ -21,4 +22,11 @@ export const LinkContainer = styled.a<LinkProps>`
 
   align-items: center;
   justify-content: center;
+
+  transition: border-radius .3s ease-out, background-color .3s ease-out;    
+  
+  &:hover {
+    border-radius: 15px;
+    background-color: ${props => props.color ?? '#FFF'}
+  }
 `

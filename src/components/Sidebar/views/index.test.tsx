@@ -31,7 +31,7 @@ describe('Sidebar component tests', () => {
     // arrange
     const testId = 'sidebar-component'
     const attributes = ['data-testid', 'class']
-    const linkStyledComponentsAttributes = ['width', 'height', 'data-testid', 'class']
+    const linkStyledComponentsAttributes = ['width', 'height', 'color', 'data-testid', 'class']
     const linkedStyledWidthAttribute = 48
     const linkedStyledHeightAttribute = 48
 
