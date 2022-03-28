@@ -4,7 +4,8 @@ import { LinkStyled } from '../../Link'
 import DiscordSVG from '../../../assets/images/Discord-Logo-Color.svg'
 
 import {
-  Sidebar
+  Sidebar,
+  DividerContainer
 } from './styles'
 
 export interface SideBarViewProps {
@@ -12,9 +13,9 @@ export interface SideBarViewProps {
 }
 
 export const SidebarView = ({ viewModel }: SideBarViewProps) => {
-  const DiscordLinkStyledRender = (item: number, index: number) => {
+  const DiscordLinkStyledRender = ({ key }: { key: string }) => {
     return (
-      <LinkStyled key={`${item}-${index}`} height={48} width={48} color={viewModel.DISCORD_LOGO_COLOR}>
+      <LinkStyled key={key} height={48} width={48} color={viewModel.DISCORD_LOGO_COLOR}>
         <DiscordSVG
           width={42}
           height={42}
@@ -28,17 +29,17 @@ export const SidebarView = ({ viewModel }: SideBarViewProps) => {
 
   return (
     <Sidebar data-testid="sidebar-component">
+      <DiscordLinkStyledRender key='discord-logo-first' />
+      <DividerContainer><div></div></DividerContainer>
       {
         viewModel.servers.map((item: number, index: number) =>
           (
-            index === 0
-              ? DiscordLinkStyledRender(item, index)
-              : <LinkStyled key={`${item}-${index}`} height={48} width={48}>
-              <DiscordSVG
-                width={42}
-                height={42}
-              />
-            </LinkStyled>
+          <LinkStyled key={`${item}-${index}`} height={48} width={48}>
+            <DiscordSVG
+              width={42}
+              height={42}
+            />
+          </LinkStyled>
           )
         )
       }

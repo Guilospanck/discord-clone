@@ -33,7 +33,6 @@ describe('Sidebar component tests', () => {
     // arrange
     const testId = 'sidebar-component'
     const attributes = ['data-testid', 'class']
-    const linkStyledComponentsAttributesDiscordIcon = ['width', 'height', 'color', 'data-testid', 'class']
     const linkStyledComponentsAttributesOtherServers = ['width', 'height', 'data-testid', 'class']
     const linkedStyledWidthAttribute = 48
     const linkedStyledHeightAttribute = 48
@@ -45,15 +44,12 @@ describe('Sidebar component tests', () => {
     expect(sut.getByTestId(testId)).toBeTruthy()
     expect(sut.getByTestId(testId).nodeName).toEqual('NAV') // <nav /> tag
     expect(sut.getByTestId(testId).getAttributeNames()).toEqual(attributes)
-    expect(sut.getByTestId(testId).children.length).toEqual(3)
+    expect(sut.getByTestId(testId).children.length).toEqual(5)
 
-    for (let i = 0; i < 3; i++) {
+    // Test only the servers
+    for (let i = 2; i < 5; i++) {
       expect(sut.getByTestId(testId).children.item(i).nodeName).toEqual('A') // <a /> tag
-      if (i === 0) {
-        expect(sut.getByTestId(testId).children.item(i).getAttributeNames()).toEqual(linkStyledComponentsAttributesDiscordIcon)
-      } else {
-        expect(sut.getByTestId(testId).children.item(i).getAttributeNames()).toEqual(linkStyledComponentsAttributesOtherServers)
-      }
+      expect(sut.getByTestId(testId).children.item(i).getAttributeNames()).toEqual(linkStyledComponentsAttributesOtherServers)
       expect(sut.getByTestId(testId).children.item(i).getAttribute('width')).toEqual(linkedStyledWidthAttribute.toString())
       expect(sut.getByTestId(testId).children.item(i).getAttribute('height')).toEqual(linkedStyledHeightAttribute.toString())
     }

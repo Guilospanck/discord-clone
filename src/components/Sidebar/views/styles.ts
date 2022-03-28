@@ -13,5 +13,18 @@ export const Sidebar = styled.nav`
   padding: 12px 0 0;
   align-items: center;
   gap: 1%;
+`
 
+export const DividerContainer = styled.div`
+  margin: 8px 0;
+  display: flex;
+  justify-content: center;
+  width: 72px;
+
+  div {
+    height: 2px;
+    width: 32px;
+    border-radius: 1px;
+    background-color: hsla(0,0%,100%,0.06);
+  }
 `
