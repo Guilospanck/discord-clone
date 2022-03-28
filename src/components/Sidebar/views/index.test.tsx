@@ -3,10 +3,10 @@ import { cleanup, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { SidebarView } from './index'
 
-import { IUseSidebarViewModel } from '../viewModels/sidebarViewModel'
+import { UseSidebarViewModelReturnType } from '../viewModels/sidebarViewModel'
 
 function makeSut () {
-  const viewModel = (): IUseSidebarViewModel => {
+  const viewModel = (): UseSidebarViewModelReturnType => {
     const servers = [1, 2, 3]
     const DISCORD_LOGO_COLOR = '#5865F2'
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { IUseSidebarViewModel } from '../viewModels/sidebarViewModel'
+import { UseSidebarViewModelReturnType } from '../viewModels/sidebarViewModel'
 import { LinkStyled } from '../../Link'
 import DiscordSVG from '../../../assets/images/Discord-Logo-Color.svg'
 
@@ -8,14 +8,14 @@ import {
   DividerContainer
 } from './styles'
 
-export interface SideBarViewProps {
-  viewModel: IUseSidebarViewModel
+type SideBarViewProps = {
+  viewModel: UseSidebarViewModelReturnType
 }
 
 export const SidebarView = ({ viewModel }: SideBarViewProps) => {
-  const DiscordLinkStyledRender = ({ key }: { key: string }) => {
+  const DiscordLinkStyledRender = () => {
     return (
-      <LinkStyled key={key} height={48} width={48} color={viewModel.DISCORD_LOGO_COLOR}>
+      <LinkStyled key="discord-link-styled-render" height={48} width={48} color={viewModel.DISCORD_LOGO_COLOR}>
         <DiscordSVG
           width={42}
           height={42}
@@ -29,7 +29,7 @@ export const SidebarView = ({ viewModel }: SideBarViewProps) => {
 
   return (
     <Sidebar data-testid="sidebar-component">
-      <DiscordLinkStyledRender key='discord-logo-first' />
+      <DiscordLinkStyledRender />
       <DividerContainer><div></div></DividerContainer>
       {
         viewModel.servers.map((item: number, index: number) =>

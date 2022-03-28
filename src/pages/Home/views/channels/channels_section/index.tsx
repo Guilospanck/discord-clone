@@ -1,5 +1,5 @@
 import React from 'react'
-import { IUseChannelsSectionViewModel } from '../../../viewModels/channelsSectionViewModel'
+import { UseChannelsSectionViewModelReturnType } from '../../../viewModels/channelsSectionViewModel'
 
 import MicrophoneSVG from '../../../../../assets/images/Discord-microphone.svg'
 import HeadphoneSVG from '../../../../../assets/images/Discord-headphone.svg'
@@ -16,7 +16,7 @@ import {
 } from './styles'
 
 type ChannelsSectionViewProps = {
-  viewModel: IUseChannelsSectionViewModel
+  viewModel: UseChannelsSectionViewModelReturnType
 }
 
 export const ChannelsSectionView = ({ viewModel }: ChannelsSectionViewProps) => {

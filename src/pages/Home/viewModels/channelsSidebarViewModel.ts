@@ -1,5 +1,5 @@
-export interface IUseChannelsSidebarViewModel {}
+export type UseChannelsSidebarViewModelReturnType = {}
 
-export const useChannelsSidebarViewModel = (): IUseChannelsSidebarViewModel => {
+export const useChannelsSidebarViewModel = (): UseChannelsSidebarViewModelReturnType => {
   return 0
 }

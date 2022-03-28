@@ -1,5 +1,5 @@
 import React from 'react'
-import { IUseHomeViewModel } from '../viewModels/homeViewModel'
+import { UseHomeViewModelReturnType } from '../viewModels/homeViewModel'
 
 import {
   Container,
@@ -8,8 +8,8 @@ import {
   Article
 } from './styles'
 
-export type HomeViewProps = {
-  viewModel: IUseHomeViewModel,
+type HomeViewProps = {
+  viewModel: UseHomeViewModelReturnType,
   ChannelsComponent: React.FC
 }
 

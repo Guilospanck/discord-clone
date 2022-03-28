@@ -1,5 +1,5 @@
-export interface IUseHomeViewModel {}
+export type UseHomeViewModelReturnType = {}
 
-export const useHomeViewModel = (): IUseHomeViewModel => {
+export const useHomeViewModel = (): UseHomeViewModelReturnType => {
   return 0
 }
