@@ -10,6 +10,8 @@ import {
   TextContentEditable
 } from "./styles";
 
+import './cssStyle.css'
+
 import AddButtonSVG from '../../../../../assets/images/Add-button.svg'
 
 type ChatFormViewProps = {
@@ -26,20 +28,23 @@ export const ChatFormView = ({ viewModel }: ChatFormViewProps) => {
     </AddButtonContainer>
   )
 
+  const MessageInputFC = () => (
+    <TextContainer>
+      <TextContentEditable
+        contentEditable
+        ref={viewModel.messageRef}
+        onKeyDown={(e) => viewModel.onKeyDown(e)}
+        placeholder="Message #texto"
+      />
+    </TextContainer>
+  )
+
   return (
     <Form>
       <ScrollableContainer>
         <InnerContainerWithMessagesAndButtons>
           <AddButtonFC />
-          <TextContainer>
-            <TextContentEditable
-              contentEditable
-              ref={viewModel.messageRef}
-              onKeyDown={(e) => viewModel.onKeyDown(e.nativeEvent)}            
-            >
-              Message #texto
-            </TextContentEditable>
-          </TextContainer>
+          <MessageInputFC />
         </InnerContainerWithMessagesAndButtons>
       </ScrollableContainer>
     </Form>

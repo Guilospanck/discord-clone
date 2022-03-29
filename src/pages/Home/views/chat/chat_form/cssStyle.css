@@ -1,0 +1,6 @@
+/* This CSS is being used because 'contentEditable'
+   don't display 'placeholder' attribute */
+[contentEditable=true]:empty:not(:focus):before{
+  content:attr(placeholder);
+  color: #72767d;
+}
