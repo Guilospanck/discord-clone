@@ -1,5 +1,5 @@
 import React from 'react'
-import { Channels, ChannelsList, Icons, UseChannelsSidebarViewModelReturnType } from '~/pages/Home/viewModels/channelsSidebarViewModel'
+import { Channels, ChannelsList, Icons, UseChannelsSidebarViewModelReturnType } from '~/pages/Home/viewModels/channels/channelsSidebarViewModel'
 
 import ChannelDropdownSVG from '../../../../../assets/images/Discord-channel-drop.svg'
 import ChannelAudioSVG from '../../../../../assets/images/Discord-audio.svg'

@@ -3,24 +3,19 @@ import { UseHomeViewModelReturnType } from '../viewModels/homeViewModel'
 
 import {
   Container,
-  Content,
-  Section,
-  Article
 } from './styles'
 
 type HomeViewProps = {
   viewModel: UseHomeViewModelReturnType,
-  ChannelsComponent: React.FC
+  ChannelsComponent: React.FC,
+  ChatComponent: React.FC
 }
 
-export const HomeView = ({ viewModel, ChannelsComponent }: HomeViewProps) => {
+export const HomeView = ({ viewModel, ChannelsComponent, ChatComponent }: HomeViewProps) => {
   return (
     <Container>
       <ChannelsComponent></ChannelsComponent>
-      <Content>
-        <Section></Section>
-        <Article></Article>
-      </Content>
+      <ChatComponent></ChatComponent>
     </Container>
   )
 }

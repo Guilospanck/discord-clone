@@ -1,5 +1,5 @@
 import React from 'react'
-import { UseChannelsSectionViewModelReturnType } from '../../../viewModels/channelsSectionViewModel'
+import { UseChannelsSectionViewModelReturnType } from '../../../viewModels/channels/channelsSectionViewModel'
 
 import MicrophoneSVG from '../../../../../assets/images/Discord-microphone.svg'
 import HeadphoneSVG from '../../../../../assets/images/Discord-headphone.svg'
