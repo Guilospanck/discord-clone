@@ -46,10 +46,6 @@ export const useChatFormViewModel = (): UseChatFormViewModelReturnType => {
       x: 0,
       y: -22
     },
-    {
-      x: 242,
-      y: 110
-    },
   ]
 
   const onKeyDown = (e: KeyboardEvent) => {
