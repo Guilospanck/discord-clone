@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const SCROLLABLE_BG_COLOR = "#40444b"
 const FORM_COLOR = "#dcddde"
+const INTERACTIVE_NORMAL = "#b9bbbe"
 
 export const Form = styled.form`
   position: relative;
@@ -24,7 +25,6 @@ export const ScrollableContainer = styled.div`
   overflow-x: hidden;
   overflow-y: hidden;
   border-radius: 8px;
-
 `
 
 export const InnerContainerWithMessagesAndButtons = styled.div`
@@ -95,6 +95,51 @@ export const TextContentEditable = styled.div`
 
   text-align: left;
   word-break: break-word;
-  white-space: break-spaces !important;
- 
+  white-space: break-spaces !important; 
+`
+
+/** EMOJIS BUTTONS */
+export const ButtonContainer = styled.div`
+  position: sticky;  
+  flex: 0 0 auto;
+  align-self: stretch;
+  padding: 7px 10px;  
+`
+
+export const ButtonImage = styled.button`
+  position: sticky;
+  outline: none;
+  background: transparent;
+  appearance: none;
+  border: none;
+  color: ${INTERACTIVE_NORMAL};
+  cursor: pointer;
+
+  &:hover {
+    color: ${FORM_COLOR};
+  }
+`
+
+type ImgStyledProps = {
+  urlImg: string,
+  bgPositionX: number,
+  bgPositionY: number,
+}
+export const ImgStyled = styled.div<ImgStyledProps>`
+  background-image: url(${props => props.urlImg});
+  background-size: 242px 110px;
+  background-position: ${props => props.bgPositionX}px ${props => props.bgPositionY}px;
+
+  transform: scale(1);
+  filter: grayscale(100%);
+
+  background-repeat: no-repeat;
+  width: 22px;
+  height: 22px;
+  display: block;
+
+  &:hover {
+    transform: scale(1.14);
+    filter: grayscale(0%);    
+  }
 `

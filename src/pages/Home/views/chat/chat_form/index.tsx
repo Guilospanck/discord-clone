@@ -7,12 +7,20 @@ import {
   AddButtonContainer,
   AddButton,
   TextContainer,
-  TextContentEditable
+  TextContentEditable,
+  ButtonContainer,
+  ButtonImage,
+  ImgStyled
 } from "./styles";
 
 import './cssStyle.css'
 
 import AddButtonSVG from '../../../../../assets/images/Add-button.svg'
+import GiftButtonSVG from '../../../../../assets/images/Discord-gift.svg'
+import GifButtonSVG from '../../../../../assets/images/Discord-gif.svg'
+import StickerButtonSVG from '../../../../../assets/images/Discord-sticker.svg'
+import EmojiPNG from '../../../../../assets/images/Discord-emoji.png'
+
 
 type ChatFormViewProps = {
   viewModel: UseChatFormViewModelReturnType
@@ -39,12 +47,28 @@ export const ChatFormView = ({ viewModel }: ChatFormViewProps) => {
     </TextContainer>
   )
 
+  const EmojisButtonsFC = () => (
+    <ButtonContainer>
+      <ButtonImage><GiftButtonSVG /></ButtonImage>
+      <ButtonImage><GifButtonSVG /></ButtonImage>
+      <ButtonImage><StickerButtonSVG /></ButtonImage>
+      <ButtonImage onMouseEnter={() => viewModel.onMouseEnterEmojiBtn()}>
+        <ImgStyled
+          urlImg={EmojiPNG}
+          bgPositionX={viewModel.BACKGROUND_POSITIONS[viewModel.emojiRandomnessIndex].x}
+          bgPositionY={viewModel.BACKGROUND_POSITIONS[viewModel.emojiRandomnessIndex].y}
+        />
+      </ButtonImage>
+    </ButtonContainer>
+  )
+
   return (
     <Form>
       <ScrollableContainer>
         <InnerContainerWithMessagesAndButtons>
           <AddButtonFC />
           <MessageInputFC />
+          <EmojisButtonsFC />
         </InnerContainerWithMessagesAndButtons>
       </ScrollableContainer>
     </Form>
