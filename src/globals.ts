@@ -1,5 +1,8 @@
 import styled, { createGlobalStyle } from 'styled-components'
 
+const SCROLLBAR_TRACK_BG = "#2e3338"
+const SCROLLBAR_THUMB_BG = "#202225"
+
 export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
@@ -27,6 +30,33 @@ export const GlobalStyle = createGlobalStyle`
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
+
+  /* Changing scrollbar styles */
+  *::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+  }
+
+  *::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: ${SCROLLBAR_THUMB_BG};
+    min-height: 40px;
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    border-radius: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background-color: ${SCROLLBAR_TRACK_BG};
+  }
+
 `
 
 export const Container = styled.div`
