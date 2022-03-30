@@ -23,7 +23,7 @@ export const ScrollableContainer = styled.div`
   color: ${FORM_COLOR};
 
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: auto;
   border-radius: 8px;
 `
 
@@ -90,8 +90,6 @@ export const TextContentEditable = styled.div`
   /* Use contentEditable */
   min-height: 44px;
   max-height: 50vh;
-  overflow-x: hidden;
-  overflow-y: auto;
 
   text-align: left;
   word-break: break-word;
