@@ -3,7 +3,6 @@ import { UseChatMainViewModelReturnType } from '~/pages/Home/viewModels/chat/use
 
 import {
   Article,
-  Container,
   Avatar,
   MessageContainer,
   UsernameAndTimestampContainer,
@@ -23,7 +22,6 @@ export const ChatMainView = ({ }: ChatMainViewProps) => {
 
   return (
     <Article>
-
       <MessageContainer>
         <Avatar
           src="https://cdn.discordapp.com/avatars/759237066999201852/e780bd32be2d3b5e78179ddc8da20e77.webp?size=80"
@@ -40,43 +38,6 @@ export const ChatMainView = ({ }: ChatMainViewProps) => {
           {mockedText}
         </MessageContent>
       </MessageContainer>
-
-      <MessageContainer>
-        <Avatar
-          src="https://cdn.discordapp.com/avatars/759237066999201852/e780bd32be2d3b5e78179ddc8da20e77.webp?size=80"
-          aria-hidden="true"
-          alt=" "
-        />
-        <UsernameAndTimestampContainer>
-          <Username>guilospanck</Username>
-          <TimestampContainer>
-            <Timestamp>Today at 6:11pm</Timestamp>
-          </TimestampContainer>
-        </UsernameAndTimestampContainer>
-        <MessageContent>
-          {mockedText}
-        </MessageContent>
-      </MessageContainer>
-
-      <MessageContainer>
-        <Avatar
-          src="https://cdn.discordapp.com/avatars/759237066999201852/e780bd32be2d3b5e78179ddc8da20e77.webp?size=80"
-          aria-hidden="true"
-          alt=" "
-        />
-        <UsernameAndTimestampContainer>
-          <Username>guilospanck</Username>
-          <TimestampContainer>
-            <Timestamp>Today at 6:11pm</Timestamp>
-          </TimestampContainer>
-        </UsernameAndTimestampContainer>
-        <MessageContent>
-          {mockedText}
-        </MessageContent>
-      </MessageContainer>
-
-
-
     </Article>
   )
 

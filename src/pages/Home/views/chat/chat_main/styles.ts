@@ -19,15 +19,6 @@ export const Article = styled.article`
   overflow-anchor: none; // when new data appears, it won't move the scrollbar    
 `
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  overflow: hidden;
-  position: relative;
-  margin-top: 1.0625rem;
-`
-
 export const Avatar = styled.img`
   position: absolute;
   left: 16px;
