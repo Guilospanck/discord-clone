@@ -1,8 +1,25 @@
 import React from "react";
 import { UseChatSectionViewModelReturnType } from "~/pages/Home/viewModels/chat/useChatSectionViewModel";
+import ChannelHashtagSVG from '../../../../../assets/images/Discord-hashtag.svg'
+
+import ThreadsSVG from '../../../../../assets/images/Discord-threads.svg'
+import AlarmsSVG from '../../../../../assets/images/Discord-alarms.svg'
+import PinSVG from '../../../../../assets/images/Discord-pin.svg'
+import MemberListSVG from '../../../../../assets/images/Discord-memberlist.svg'
+import MagnifyingGlassSVG from '../../../../../assets/images/Discord-magnifyingglass.svg'
+import InboxSVG from '../../../../../assets/images/Discord-inbox.svg'
+import HelpSVG from '../../../../../assets/images/Discord-help.svg'
 
 import {
-  Section
+  Section,
+  ChannelNameAndIcon,
+  ChannelIcon,
+  ChannelName,
+  ButtonIconsContainer,
+  ButtonIcon,
+  InputAndIconContainer,
+  InputStyled,
+  MagnifyingGlassContainer
 } from './styles'
 
 type ChatSectionProps = {
@@ -11,9 +28,40 @@ type ChatSectionProps = {
 
 export const ChatSectionView = ({ viewModel }: ChatSectionProps) => {
 
+  const ChannelNameAndIconFC = () => (
+    <ChannelNameAndIcon>
+      <ChannelIcon>
+        <ChannelHashtagSVG />
+      </ChannelIcon>
+      <ChannelName>
+        texto
+      </ChannelName>
+    </ChannelNameAndIcon>
+  )
+
+  const ButtonIconsContainerFC = () => (
+    <ButtonIconsContainer>
+      <ButtonIcon><ThreadsSVG /></ButtonIcon>
+      <ButtonIcon><AlarmsSVG /></ButtonIcon>
+      <ButtonIcon><PinSVG /></ButtonIcon>
+      <ButtonIcon><MemberListSVG /></ButtonIcon>
+
+      <InputAndIconContainer>
+        <InputStyled placeholder="Search" />
+        <MagnifyingGlassContainer>
+          <MagnifyingGlassSVG />
+        </MagnifyingGlassContainer>
+      </InputAndIconContainer>
+
+      <ButtonIcon><InboxSVG /></ButtonIcon>
+      <ButtonIcon><HelpSVG /></ButtonIcon>
+    </ButtonIconsContainer>
+  )
+
   return (
     <Section>
-      Chat Section
+      <ChannelNameAndIconFC />
+      <ButtonIconsContainerFC />
     </Section>
   )
 }
