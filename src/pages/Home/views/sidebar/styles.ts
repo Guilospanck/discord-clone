@@ -19,7 +19,7 @@ export const Sidebar = styled.nav`
   padding: 12px 0 0;
   align-items: center;
   gap: 1%;
-
+  
   &::-webkit-scrollbar {
     width: 0 !important;
     background: transparent !important;
@@ -44,23 +44,27 @@ export const DividerContainer = styled.div`
 export const ServersContainer = styled.div`
   display: flex;
   flex-direction: column;
-  max-height: 100vh;
-
-  padding: 12px 0 0;
   align-items: center;
-  gap: 1%;
+  gap: 2%;
+  width: 100%;
+  height: 100%;
+`
 
-  // overflow-y: auto;
-  // overflow-x: hidden;
+export const PillAndImageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
 `
 
 type PillContainerProps = {
-  index: number
+  index?: number
 }
 
 export const PillContainer = styled.div<PillContainerProps>`
   position: absolute;
-  // top: calc(105px + 52px * ${props => props.index});
+  top: 20px;
   left: 0;
 `
 

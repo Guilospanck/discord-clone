@@ -40,7 +40,9 @@ describe('Sidebar component tests', () => {
     // arrange
     const testId = 'sidebar-component'
     const attributes = ['data-testid', 'class']
-    const linkStyledComponentsAttributesOtherServers = ['width', 'height', 'data-testid', 'class']
+    const containerOfServersAttributes = ['class']
+    const pillContainerAttributes = ['class']
+    const linkStyledAttributes = ['width', 'height', 'data-testid', 'class']
     const linkedStyledWidthAttribute = 48
     const linkedStyledHeightAttribute = 48
 
@@ -51,14 +53,20 @@ describe('Sidebar component tests', () => {
     expect(sut.getByTestId(testId)).toBeTruthy()
     expect(sut.getByTestId(testId).nodeName).toEqual('NAV') // <nav /> tag
     expect(sut.getByTestId(testId).getAttributeNames()).toEqual(attributes)
-    expect(sut.getByTestId(testId).children.length).toEqual(servers.length + 2)
+    expect(sut.getByTestId(testId).children.length).toEqual(3)
 
     // Test only the servers
-    for (let i = 2; i < servers.length + 2; i++) {
-      expect(sut.getByTestId(testId).children.item(i).nodeName).toEqual('A') // <a /> tag
-      expect(sut.getByTestId(testId).children.item(i).getAttributeNames()).toEqual(linkStyledComponentsAttributesOtherServers)
-      expect(sut.getByTestId(testId).children.item(i).getAttribute('width')).toEqual(linkedStyledWidthAttribute.toString())
-      expect(sut.getByTestId(testId).children.item(i).getAttribute('height')).toEqual(linkedStyledHeightAttribute.toString())
+    const serversFromSidebar = sut.getByTestId(testId).children.item(2)
+    for (let i = 0; i < servers.length; i++) {
+      expect(serversFromSidebar.children.item(i).nodeName).toEqual('DIV') // <div /> tag
+      expect(serversFromSidebar.children.item(i).getAttributeNames()).toEqual(containerOfServersAttributes)
+      expect(serversFromSidebar.children.item(i).children.length).toEqual(2) // <PillContainer> and <LinkStyled>
+
+      expect(serversFromSidebar.children.item(i).children.item(0).getAttributeNames()).toEqual(pillContainerAttributes)
+      expect(serversFromSidebar.children.item(i).children.item(1).getAttributeNames()).toEqual(linkStyledAttributes)
+
+      expect(serversFromSidebar.children.item(i).children.item(1).getAttribute('width')).toEqual(linkedStyledWidthAttribute.toString())
+      expect(serversFromSidebar.children.item(i).children.item(1).getAttribute('height')).toEqual(linkedStyledHeightAttribute.toString())
     }
   })
 })

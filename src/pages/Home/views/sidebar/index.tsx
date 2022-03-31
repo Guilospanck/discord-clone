@@ -6,7 +6,11 @@ import DiscordSVG from '../../../../assets/images/Discord-Logo-Color.svg'
 import {
   Sidebar,
   DividerContainer,
-  ImageContainer
+  ServersContainer,
+  PillAndImageContainer,
+  ImageContainer,
+  PillContainer,
+  Pill
 } from './styles'
 
 type SideBarViewProps = {
@@ -30,28 +34,32 @@ export const SidebarView = ({ viewModel }: SideBarViewProps) => {
     <Sidebar data-testid="sidebar-component">
       <DiscordLinkStyledRender />
       <DividerContainer><div></div></DividerContainer>
-      {
-        viewModel.allServers.map((server, index) =>
-          (
-          <LinkStyled
-            key={`${server.serverTitle}-${index}`}
-            height={48}
-            width={48}
-            onClickFn={viewModel.handleSidebarLinkClick}
-            elementIndex={index}
-          >
-            {/* <PillContainer index={index}>
+      <ServersContainer>
+        {
+          viewModel.allServers.map((server, index) =>
+            (
+            <PillAndImageContainer key={`pill-${index}`}>
+              <PillContainer>
                 <Pill />
-              </PillContainer> */}
+              </PillContainer>
+              <LinkStyled
+                key={`${server.serverTitle}-${index}`}
+                height={48}
+                width={48}
+                onClickFn={viewModel.handleSidebarLinkClick}
+                elementIndex={index}
+              >
 
-            <ImageContainer
-              src={server.serverIcon}
-              alt={`Icon of server ${server}`}
-            />
-          </LinkStyled>
+                <ImageContainer
+                  src={server.serverIcon}
+                  alt={`Icon of server ${server}`}
+                />
+              </LinkStyled>
+            </PillAndImageContainer>
+            )
           )
-        )
-      }
+        }
+      </ServersContainer>
     </Sidebar>
   )
 }

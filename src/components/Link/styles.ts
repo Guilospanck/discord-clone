@@ -23,6 +23,8 @@ export const LinkContainer = styled.a<LinkProps>`
 
   cursor: pointer;
 
+  position: relative;
+
   align-items: center;
   justify-content: center;
 
