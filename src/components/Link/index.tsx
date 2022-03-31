@@ -10,8 +10,8 @@ type ButtonProps = {
   backgroundColor?: string,
   borderRadius?: number,
   color?: string,
-  onClickFn?: (serverIdx: number) => void,
-  serverIdx?: number
+  onClickFn?: (elementIndex: number) => void,
+  elementIndex?: number
 }
 
 export const LinkStyled: FunctionComponent<ButtonProps> = (props) => {
@@ -23,7 +23,7 @@ export const LinkStyled: FunctionComponent<ButtonProps> = (props) => {
       borderRadius={props.borderRadius}
       color={props.color}
       data-testid="link-container"
-      onClick={() => { props.onClickFn && props.onClickFn(props.serverIdx) }}
+      onClick={() => { props.onClickFn && props.onClickFn(props.elementIndex) }}
     >
       {props.children}
     </LinkContainer>

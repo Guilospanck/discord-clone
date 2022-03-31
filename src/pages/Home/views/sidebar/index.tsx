@@ -38,8 +38,12 @@ export const SidebarView = ({ viewModel }: SideBarViewProps) => {
             height={48}
             width={48}
             onClickFn={viewModel.handleSidebarLinkClick}
-            serverIdx={index}
+            elementIndex={index}
           >
+            {/* <PillContainer index={index}>
+                <Pill />
+              </PillContainer> */}
+
             <ImageContainer
               src={server.serverIcon}
               alt={`Icon of server ${server}`}

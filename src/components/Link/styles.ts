@@ -11,7 +11,8 @@ type LinkProps = {
 }
 
 export const LinkContainer = styled.a<LinkProps>`
-  display: flex;
+  display: flex;  
+  flex: 0 0 auto;
   width: ${props => props.width}px;
   height: ${props => props.height}px;
   background-color: ${props => props.backgroundColor ?? BG_COLOR};

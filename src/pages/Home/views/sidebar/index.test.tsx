@@ -7,10 +7,11 @@ import { UseSidebarViewModelReturnType } from '../../viewModels/sidebar/sidebarV
 import { serversMocked } from '../../../../../__mocks__/homeMocks'
 
 function makeSut () {
+  const servers = serversMocked
+
   const viewModel = (): UseSidebarViewModelReturnType => {
-    const servers = serversMocked
     const DISCORD_LOGO_COLOR = '#5865F2'
-    const handleSidebarLinkClick = () => {}
+    const handleSidebarLinkClick = () => { }
 
     return {
       allServers: servers,
@@ -23,7 +24,10 @@ function makeSut () {
     <SidebarView viewModel={viewModel()} />
   )
 
-  return sut
+  return {
+    sut,
+    servers
+  }
 }
 
 describe('Sidebar component tests', () => {
@@ -41,16 +45,16 @@ describe('Sidebar component tests', () => {
     const linkedStyledHeightAttribute = 48
 
     // act
-    const sut = makeSut()
+    const { sut, servers } = makeSut()
 
     // assert
     expect(sut.getByTestId(testId)).toBeTruthy()
     expect(sut.getByTestId(testId).nodeName).toEqual('NAV') // <nav /> tag
     expect(sut.getByTestId(testId).getAttributeNames()).toEqual(attributes)
-    expect(sut.getByTestId(testId).children.length).toEqual(6)
+    expect(sut.getByTestId(testId).children.length).toEqual(servers.length + 2)
 
     // Test only the servers
-    for (let i = 2; i < 6; i++) {
+    for (let i = 2; i < servers.length + 2; i++) {
       expect(sut.getByTestId(testId).children.item(i).nodeName).toEqual('A') // <a /> tag
       expect(sut.getByTestId(testId).children.item(i).getAttributeNames()).toEqual(linkStyledComponentsAttributesOtherServers)
       expect(sut.getByTestId(testId).children.item(i).getAttribute('width')).toEqual(linkedStyledWidthAttribute.toString())
