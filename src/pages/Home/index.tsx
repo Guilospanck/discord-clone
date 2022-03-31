@@ -20,6 +20,9 @@ import { useChatSectionViewModel } from './viewModels/chat/useChatSectionViewMod
 import { useChatMainViewModel } from './viewModels/chat/useChatMainViewModel'
 import { useChatFormViewModel } from './viewModels/chat/useChatFormViewModel'
 
+/** Context */
+import { HomeContextProvider } from './context/homeContext'
+
 /** Components */
 const ChannelsServerTitleComponent = () => {
   const viewModel = useChannelsServerTitleViewModel()
@@ -67,14 +70,17 @@ const ChatComponent = () => {
   />
 }
 
+
 export const Home = () => {
   const viewModel = useHomeViewModel()
 
   return (
-    <HomeView
-      viewModel={viewModel}
-      ChannelsComponent={ChannelsComponent}
-      ChatComponent={ChatComponent}
-    />
+    <HomeContextProvider>
+      <HomeView
+        viewModel={viewModel}
+        ChannelsComponent={ChannelsComponent}
+        ChatComponent={ChatComponent}
+      />
+    </HomeContextProvider>
   )
 }
