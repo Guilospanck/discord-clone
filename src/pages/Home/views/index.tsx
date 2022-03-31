@@ -1,21 +1,21 @@
 import React from 'react'
-import { UseHomeViewModelReturnType } from '../viewModels/homeViewModel'
 
 import {
-  Container,
+  Container
 } from './styles'
 
 type HomeViewProps = {
-  viewModel: UseHomeViewModelReturnType,
+  SidebarComponent: React.FC,
   ChannelsComponent: React.FC,
   ChatComponent: React.FC
 }
 
-export const HomeView = ({ viewModel, ChannelsComponent, ChatComponent }: HomeViewProps) => {
+export const HomeView = ({ SidebarComponent, ChannelsComponent, ChatComponent }: HomeViewProps) => {
   return (
     <Container>
-      <ChannelsComponent></ChannelsComponent>
-      <ChatComponent></ChatComponent>
+      <SidebarComponent />
+      <ChannelsComponent />
+      <ChatComponent />
     </Container>
   )
 }

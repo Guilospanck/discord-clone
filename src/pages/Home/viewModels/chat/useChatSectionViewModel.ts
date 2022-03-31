@@ -1,5 +1,11 @@
-export type UseChatSectionViewModelReturnType = {}
+export type UseChatSectionViewModelReturnType = {
+  channelNameMock: string
+}
 
 export const useChatSectionViewModel = (): UseChatSectionViewModelReturnType => {
-  return 0
+  const channelNameMock = 'texto'
+
+  return {
+    channelNameMock
+  }
 }

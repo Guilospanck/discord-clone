@@ -3,15 +3,16 @@ import { cleanup, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { SidebarView } from './index'
 
-import { UseSidebarViewModelReturnType } from '../viewModels/sidebarViewModel'
+import { UseSidebarViewModelReturnType } from '../../viewModels/sidebar/sidebarViewModel'
+import { serversMocked } from '../../../../../__mocks__/homeMocks'
 
 function makeSut () {
   const viewModel = (): UseSidebarViewModelReturnType => {
-    const servers = [1, 2, 3]
+    const servers = serversMocked
     const DISCORD_LOGO_COLOR = '#5865F2'
 
     return {
-      servers,
+      allServers: servers,
       DISCORD_LOGO_COLOR
     }
   }
@@ -44,10 +45,10 @@ describe('Sidebar component tests', () => {
     expect(sut.getByTestId(testId)).toBeTruthy()
     expect(sut.getByTestId(testId).nodeName).toEqual('NAV') // <nav /> tag
     expect(sut.getByTestId(testId).getAttributeNames()).toEqual(attributes)
-    expect(sut.getByTestId(testId).children.length).toEqual(5)
+    expect(sut.getByTestId(testId).children.length).toEqual(6)
 
     // Test only the servers
-    for (let i = 2; i < 5; i++) {
+    for (let i = 2; i < 6; i++) {
       expect(sut.getByTestId(testId).children.item(i).nodeName).toEqual('A') // <a /> tag
       expect(sut.getByTestId(testId).children.item(i).getAttributeNames()).toEqual(linkStyledComponentsAttributesOtherServers)
       expect(sut.getByTestId(testId).children.item(i).getAttribute('width')).toEqual(linkedStyledWidthAttribute.toString())

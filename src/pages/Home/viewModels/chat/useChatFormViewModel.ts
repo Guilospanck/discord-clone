@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import React, { useRef, useState } from 'react'
 
 export type UseChatFormViewModelReturnType = {
   messageRef: React.MutableRefObject<HTMLDivElement>,
@@ -14,7 +14,7 @@ type BGSizeCoordinates = {
 }
 
 export const useChatFormViewModel = (): UseChatFormViewModelReturnType => {
-  const messageRef = useRef<HTMLDivElement>(null);
+  const messageRef = useRef<HTMLDivElement>(null)
   const [emojiRandomnessIndex, setEmojiRandomnessIndex] = useState(0)
 
   const BACKGROUND_POSITIONS: BGSizeCoordinates[] = [
@@ -45,13 +45,13 @@ export const useChatFormViewModel = (): UseChatFormViewModelReturnType => {
     {
       x: 0,
       y: -22
-    },
+    }
   ]
 
   const onKeyDown = (e: KeyboardEvent) => {
-    if (e.key === "Enter" && e.shiftKey) {
+    if (e.key === 'Enter' && e.shiftKey) {
       // console.log(messageRef.current.innerText)
-    } else if (e.key === "Enter") {
+    } else if (e.key === 'Enter') {
       e.preventDefault()
     }
   }

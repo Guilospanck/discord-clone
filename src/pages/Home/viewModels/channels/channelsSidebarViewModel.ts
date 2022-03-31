@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from 'react'
 
 export type UseChannelsSidebarViewModelReturnType = {
   channels: Channels[]
@@ -23,7 +23,6 @@ export type Channels = {
 }
 
 export const useChannelsSidebarViewModel = (): UseChannelsSidebarViewModelReturnType => {
-
   const initialChannels: Channels[] = [
     {
       id: '0',
@@ -43,7 +42,7 @@ export const useChannelsSidebarViewModel = (): UseChannelsSidebarViewModelReturn
           id: 'list-0-2',
           title: 'announcements',
           icon: Icons.HASHTAG
-        },
+        }
       ]
     },
     {
@@ -64,11 +63,9 @@ export const useChannelsSidebarViewModel = (): UseChannelsSidebarViewModelReturn
     }
   ]
 
-  const [channels,] = useState<Channels[]>(initialChannels)
+  const [channels] = useState<Channels[]>(initialChannels)
 
   return {
     channels
   }
-
-
 }

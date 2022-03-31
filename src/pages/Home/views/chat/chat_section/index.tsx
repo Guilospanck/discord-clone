@@ -1,5 +1,5 @@
-import React from "react";
-import { UseChatSectionViewModelReturnType } from "~/pages/Home/viewModels/chat/useChatSectionViewModel";
+import React from 'react'
+import { UseChatSectionViewModelReturnType } from '~/pages/Home/viewModels/chat/useChatSectionViewModel'
 import ChannelHashtagSVG from '../../../../../assets/images/Discord-hashtag.svg'
 
 import ThreadsSVG from '../../../../../assets/images/Discord-threads.svg'
@@ -27,14 +27,13 @@ type ChatSectionProps = {
 }
 
 export const ChatSectionView = ({ viewModel }: ChatSectionProps) => {
-
   const ChannelNameAndIconFC = () => (
     <ChannelNameAndIcon>
       <ChannelIcon>
         <ChannelHashtagSVG />
       </ChannelIcon>
       <ChannelName>
-        texto
+        {viewModel.channelNameMock}
       </ChannelName>
     </ChannelNameAndIcon>
   )

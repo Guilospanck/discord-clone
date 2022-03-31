@@ -1,7 +1,7 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
-const SCROLLBAR_TRACK_BG = "#2e3338"
-const SCROLLBAR_THUMB_BG = "#202225"
+const SCROLLBAR_TRACK_BG = '#2e3338'
+const SCROLLBAR_THUMB_BG = '#202225'
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -57,11 +57,4 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${SCROLLBAR_TRACK_BG};
   }
 
-`
-
-export const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 100%;
 `

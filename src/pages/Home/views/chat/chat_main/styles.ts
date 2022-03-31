@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const NORMAL_TEXT_COLOR = '#dcddde'
 const NORMAL_TEXT_MUTED = '#72767d'

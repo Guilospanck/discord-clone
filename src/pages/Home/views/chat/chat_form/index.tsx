@@ -1,5 +1,5 @@
-import React from "react";
-import { UseChatFormViewModelReturnType } from "~/pages/Home/viewModels/chat/useChatFormViewModel";
+import React from 'react'
+import { UseChatFormViewModelReturnType } from '~/pages/Home/viewModels/chat/useChatFormViewModel'
 import {
   Form,
   ScrollableContainer,
@@ -11,7 +11,7 @@ import {
   ButtonContainer,
   ButtonImage,
   ImgStyled
-} from "./styles";
+} from './styles'
 
 import './cssStyle.css'
 
@@ -21,13 +21,11 @@ import GifButtonSVG from '../../../../../assets/images/Discord-gif.svg'
 import StickerButtonSVG from '../../../../../assets/images/Discord-sticker.svg'
 import EmojiPNG from '../../../../../assets/images/Discord-emoji.png'
 
-
 type ChatFormViewProps = {
   viewModel: UseChatFormViewModelReturnType
 }
 
 export const ChatFormView = ({ viewModel }: ChatFormViewProps) => {
-
   const AddButtonFC = () => (
     <AddButtonContainer>
       <AddButton>

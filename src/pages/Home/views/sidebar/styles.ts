@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 const SIDEBAR_BG_COLOR = '#202225'
+const IMAGE_WIDTH = 60
+const IMAGE_HEIGHT = 60
 
 export const Sidebar = styled.nav`
   display: flex;
@@ -27,4 +29,11 @@ export const DividerContainer = styled.div`
     border-radius: 1px;
     background-color: hsla(0,0%,100%,0.06);
   }
+`
+
+export const ImageContainer = styled.img`  
+  width: ${IMAGE_WIDTH}px;
+  height: ${IMAGE_HEIGHT}px;
+  border-radius: 50%;
+  transform: scale(1.5);
 `

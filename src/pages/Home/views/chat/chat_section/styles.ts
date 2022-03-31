@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const SECTION_COLOR = '#dcddde'
 const HEADER_PRIMARY = '#FFF'

@@ -20,7 +20,6 @@ type ChannelsSidebarViewProps = {
 }
 
 export const ChannelsSidebarView = ({ viewModel }: ChannelsSidebarViewProps) => {
-
   const ChannelTitleFC = ({ channelTitle }: { channelTitle: string }) => (
     <ChannelDropdownAndH2>
       <ChannelDropdownSVG width={12} height={12} />

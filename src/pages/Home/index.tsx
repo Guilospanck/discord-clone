@@ -2,6 +2,7 @@ import React from 'react'
 
 /** Views */
 import { HomeView } from './views'
+import { SidebarView } from './views/sidebar'
 import { ChannelsView } from './views/channels'
 import { ChannelsServerTitleView } from './views/channels/channels_server_title'
 import { ChannelsSectionView } from './views/channels/channels_section'
@@ -12,7 +13,7 @@ import { ChatMainView } from './views/chat/chat_main'
 import { ChatFormView } from './views/chat/chat_form'
 
 /** ViewModels */
-import { useHomeViewModel } from './viewModels/homeViewModel'
+import { useSidebarViewModel } from './viewModels/sidebar/sidebarViewModel'
 import { useChannelsServerTitleViewModel } from './viewModels/channels/channelsServerTitleViewModel'
 import { useChannelsSectionViewModel } from './viewModels/channels/channelsSectionViewModel'
 import { useChannelsSidebarViewModel } from './viewModels/channels/channelsSidebarViewModel'
@@ -24,6 +25,11 @@ import { useChatFormViewModel } from './viewModels/chat/useChatFormViewModel'
 import { HomeContextProvider } from './context/homeContext'
 
 /** Components */
+const SidebarComponent = () => {
+  const viewModel = useSidebarViewModel()
+  return <SidebarView viewModel={viewModel} />
+}
+
 const ChannelsServerTitleComponent = () => {
   const viewModel = useChannelsServerTitleViewModel()
   return <ChannelsServerTitleView viewModel={viewModel} />
@@ -70,14 +76,11 @@ const ChatComponent = () => {
   />
 }
 
-
 export const Home = () => {
-  const viewModel = useHomeViewModel()
-
   return (
     <HomeContextProvider>
       <HomeView
-        viewModel={viewModel}
+        SidebarComponent={SidebarComponent}
         ChannelsComponent={ChannelsComponent}
         ChatComponent={ChatComponent}
       />

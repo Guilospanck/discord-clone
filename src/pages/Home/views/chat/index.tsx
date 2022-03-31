@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
 import {
-  Content,
+  Content
 } from './styles'
 
 type ChatViewProps = {
@@ -11,7 +11,6 @@ type ChatViewProps = {
 }
 
 export const ChatView = ({ ChatSectionComponent, ChatMainComponent, ChatFormComponent }: ChatViewProps) => {
-
   return (
     <Content>
       <ChatSectionComponent />

@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-const CHANNEL_UNORDERED_LIST_COLOR = "#8e9297"
+const CHANNEL_UNORDERED_LIST_COLOR = '#8e9297'
 const FONT_DISPLAY = 'Ginto,"Helvetica Neue",Helvetica,Arial,sans-serif'
-const CHANNELS_DEFAULT_COLOR = "#8e9297"
-const HOVER_COLOR = "#dcddde"
-const HOVER_BG_COLOR = "rgba(79,84,92,0.32)"
+const CHANNELS_DEFAULT_COLOR = '#8e9297'
+const HOVER_COLOR = '#dcddde'
+const HOVER_BG_COLOR = 'rgba(79,84,92,0.32)'
 
 export const Container = styled.nav`
   display: flex;  

@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-const SCROLLABLE_BG_COLOR = "#40444b"
-const FORM_COLOR = "#dcddde"
-const INTERACTIVE_NORMAL = "#b9bbbe"
+const SCROLLABLE_BG_COLOR = '#40444b'
+const FORM_COLOR = '#dcddde'
+const INTERACTIVE_NORMAL = '#b9bbbe'
 
 export const Form = styled.form`
   position: relative;

@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+const BG_COLOR = '#36393f'
+
 type LinkProps = {
   width: number,
   height: number,
@@ -12,7 +14,7 @@ export const LinkContainer = styled.a<LinkProps>`
   display: flex;
   width: ${props => props.width}px;
   height: ${props => props.height}px;
-  background-color: ${props => props.backgroundColor ?? '#FFF'};
+  background-color: ${props => props.backgroundColor ?? BG_COLOR};
   
   outline: none;
   border: none;
@@ -23,10 +25,12 @@ export const LinkContainer = styled.a<LinkProps>`
   align-items: center;
   justify-content: center;
 
+  overflow: hidden;
+
   transition: border-radius .3s ease-out, background-color .3s ease-out;    
   
   &:hover {
     border-radius: 15px;
-    background-color: ${props => props.color ?? '#FFF'}
+    background-color: ${props => props.color ?? BG_COLOR};
   }
 `

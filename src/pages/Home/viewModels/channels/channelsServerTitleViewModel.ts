@@ -1,6 +1,11 @@
-
-export type UseChannelsServerTitleViewModelReturnType = {}
+export type UseChannelsServerTitleViewModelReturnType = {
+  serverTitleMock: string
+}
 
 export const useChannelsServerTitleViewModel = (): UseChannelsServerTitleViewModelReturnType => {
-  return 0
+  const serverTitleMock = 'Dota da depressão'
+
+  return {
+    serverTitleMock
+  }
 }
