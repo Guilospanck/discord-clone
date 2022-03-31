@@ -11,6 +11,9 @@ export const Container = styled.nav`
   flex: 1 1 auto;
   flex-direction: column;
   width: 100%;
+  
+  overflow-x: none;
+  overflow-y: auto;
 
   margin-top: 16px;  
   justify-content: flex-start;
@@ -89,7 +92,7 @@ export const ChannelListH3 = styled.h3`
   overflow: hidden;
 
   font-size: 16px;
-  line-height: 16px;
+  line-height: 20px;
   
   font-weight: 500;
   color: ${CHANNELS_DEFAULT_COLOR};

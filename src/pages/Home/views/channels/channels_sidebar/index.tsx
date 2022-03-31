@@ -1,5 +1,6 @@
 import React from 'react'
-import { Channels, ChannelsList, Icons, UseChannelsSidebarViewModelReturnType } from '~/pages/Home/viewModels/channels/channelsSidebarViewModel'
+import { UseChannelsSidebarViewModelReturnType } from '~/pages/Home/viewModels/channels/channelsSidebarViewModel'
+import { Channel, ChannelSpaces, IconEnum } from '../../../types/homeTypes'
 
 import ChannelDropdownSVG from '../../../../../assets/images/Discord-channel-drop.svg'
 import ChannelAudioSVG from '../../../../../assets/images/Discord-audio.svg'
@@ -27,24 +28,24 @@ export const ChannelsSidebarView = ({ viewModel }: ChannelsSidebarViewProps) => 
     </ChannelDropdownAndH2>
   )
 
-  const ChannelListFC = ({ channelsList }: { channelsList: ChannelsList[] }) => {
+  const ChannelSpaceListFC = ({ channelsList }: { channelsList: ChannelSpaces[]}) => {
     const elements = channelsList.map((list) => (
       <ChannelList key={list.id}>
         <GetIconFromChannelList icon={list.icon} />
-        <ChannelListH3>{list.title}</ChannelListH3>
+        <ChannelListH3>{list.spaceTitle}</ChannelListH3>
       </ChannelList>
     ))
 
     return <>{elements}</>
   }
 
-  const GetIconFromChannelList = ({ icon }: { icon: Icons }) => {
+  const GetIconFromChannelList = ({ icon }: { icon: IconEnum }) => {
     switch (icon) {
-      case Icons.AUDIO:
+      case IconEnum.AUDIO:
         return <ChannelAudioSVG width={20} height={20} style={{ marginRight: '6px' }} />
-      case Icons.HASHTAG:
+      case IconEnum.HASHTAG:
         return <ChannelHashtagSVG width={20} height={20} style={{ marginRight: '6px' }} />
-      case Icons.DONE_LIST:
+      case IconEnum.DONE_LIST:
         return <ChannelCodeOfConductSVG width={20} height={20} style={{ marginRight: '6px' }} />
       default:
         return <ChannelHashtagSVG width={20} height={20} style={{ marginRight: '6px' }} />
@@ -54,11 +55,11 @@ export const ChannelsSidebarView = ({ viewModel }: ChannelsSidebarViewProps) => 
   return (
     <Container>
       {
-        viewModel.channels.map((channel: Channels) => (
+        viewModel.channels.map((channel: Channel) => (
           <>
-            <ChannelTitleFC channelTitle={channel.title} />
+            <ChannelTitleFC channelTitle={channel.channelTitle} />
             <ChannelUnorderedList key={channel.id}>
-              <ChannelListFC channelsList={channel.list} />
+              <ChannelSpaceListFC channelsList={channel.spaces} />
             </ChannelUnorderedList>
           </>
         ))

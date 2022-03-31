@@ -1,11 +1,14 @@
+import { useContext } from 'react'
+import { HomeContext } from '../../context/homeContext'
+
 export type UseChannelsServerTitleViewModelReturnType = {
-  serverTitleMock: string
+  serverTitle: string
 }
 
 export const useChannelsServerTitleViewModel = (): UseChannelsServerTitleViewModelReturnType => {
-  const serverTitleMock = 'Dota da depressão'
+  const { serverSelected } = useContext(HomeContext)
 
   return {
-    serverTitleMock
+    serverTitle: serverSelected.serverTitle
   }
 }
