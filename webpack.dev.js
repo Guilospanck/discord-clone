@@ -8,10 +8,11 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './public',
-    writeToDisk: true,
+    static: {
+      publicPath: './public',
+      watch: true
+    },    
     historyApiFallback: true,
-    watchContentBase: true,
     port: 3000
   },
   plugins: [
@@ -19,7 +20,8 @@ module.exports = merge(common, {
       path: '.env.development'
     }),
     new HtmlWebpackPlugin({
-      template: 'template.dev.html'
+      template: 'template.dev.html',
+      favicon: './src/assets/images/favicon.png'
     })
   ]
 })

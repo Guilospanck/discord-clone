@@ -1,12 +1,21 @@
 # Discord Clone
 This is the frontend part of the attempt of cloning Discord just looking at the source code for information about the dimensions, colors and fonts.
+![Dependabot](https://img.shields.io/badge/dependabot-025E8C?logo=dependabot&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?logo=githubactions&logoColor=white)
+
+![image](https://badges.aleen42.com/src/react.svg)
+![image](https://badges.aleen42.com/src/typescript.svg)
+![image](https://badges.aleen42.com/src/webpack.svg)
+![image](https://badges.aleen42.com/src/jest_1.svg)
+![image](https://badges.aleen42.com/src/react-router.svg)
+![Testing-Library](https://img.shields.io/badge/-TestingLibrary-%23E33332?logo=testing-library&logoColor=white)
 
 <p align="center">
 ➡️ 👷🚧 <b>Under Construction...</b>
 </p>
 
 ## Technologies
-- React with TypeScript from scratch
+- React v18 with TypeScript from scratch
 - Webpack, Babel, ESLint
 - Jest and React Testing Library for tests
 - Husky as Git Hooks

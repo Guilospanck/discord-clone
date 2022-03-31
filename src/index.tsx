@@ -1,16 +1,18 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import App from './App'
 import { Sidebar } from './components/Sidebar'
 import { GlobalStyle, Container } from './globals'
 
-ReactDOM.render(
+const container = document.getElementById('root')
+const root = createRoot(container)
+
+root.render(
   <React.StrictMode>
     <GlobalStyle />
     <Container>
       <Sidebar />
       <App />
     </Container>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 )
