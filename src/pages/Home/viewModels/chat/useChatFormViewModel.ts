@@ -49,10 +49,9 @@ export const useChatFormViewModel = (): UseChatFormViewModelReturnType => {
   ]
 
   const onKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'Enter' && e.shiftKey) {
-      // console.log(messageRef.current.innerText)
-    } else if (e.key === 'Enter') {
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
+      // console.log(messageRef.current.innerText)
     }
   }
 

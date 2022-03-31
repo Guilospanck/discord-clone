@@ -8,7 +8,9 @@ type SutOptions = {
   height: number,
   backgroundColor?: string,
   borderRadius?: number
-  image?: ReactElement
+  image?: ReactElement,
+  onClickFn?: (elemKey: string) => void,
+  elemKey?: string
 }
 
 function makeSut (props: SutOptions) {

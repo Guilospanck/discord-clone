@@ -10,10 +10,12 @@ function makeSut () {
   const viewModel = (): UseSidebarViewModelReturnType => {
     const servers = serversMocked
     const DISCORD_LOGO_COLOR = '#5865F2'
+    const handleSidebarLinkClick = () => {}
 
     return {
       allServers: servers,
-      DISCORD_LOGO_COLOR
+      DISCORD_LOGO_COLOR,
+      handleSidebarLinkClick
     }
   }
 

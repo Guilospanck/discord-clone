@@ -33,7 +33,13 @@ export const SidebarView = ({ viewModel }: SideBarViewProps) => {
       {
         viewModel.allServers.map((server, index) =>
           (
-          <LinkStyled key={`${server.serverTitle}-${index}`} height={48} width={48}>
+          <LinkStyled
+            key={`${server.serverTitle}-${index}`}
+            height={48}
+            width={48}
+            onClickFn={viewModel.handleSidebarLinkClick}
+            serverIdx={index}
+          >
             <ImageContainer
               src={server.serverIcon}
               alt={`Icon of server ${server}`}
