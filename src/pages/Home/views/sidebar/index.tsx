@@ -38,9 +38,16 @@ export const SidebarView = ({ viewModel }: SideBarViewProps) => {
         {
           viewModel.allServers.map((server, index) =>
             (
-            <PillAndImageContainer key={`pill-${index}`}>
+            <PillAndImageContainer
+              key={`pill-${index}`}
+              onMouseEnter={() => viewModel.handleOnMouseEnterPillAndImageContainer(server.id)}
+              onMouseLeave={() => viewModel.handleOnMouseLeavePillAndImageContainer(server.id)}
+            >
               <PillContainer>
-                <Pill />
+                <Pill
+                  show={viewModel.serverSelected.id === server.id}
+                  hovering={viewModel.serverHover[server.id] ?? false}
+                />
               </PillContainer>
               <LinkStyled
                 key={`${server.serverTitle}-${index}`}

@@ -12,11 +12,19 @@ function makeSut () {
   const viewModel = (): UseSidebarViewModelReturnType => {
     const DISCORD_LOGO_COLOR = '#5865F2'
     const handleSidebarLinkClick = () => { }
+    const serverSelected = servers[0]
+    const handleOnMouseEnterPillAndImageContainer = () => { }
+    const handleOnMouseLeavePillAndImageContainer = () => { }
+    const serverHover = {}
 
     return {
       allServers: servers,
       DISCORD_LOGO_COLOR,
-      handleSidebarLinkClick
+      handleSidebarLinkClick,
+      serverSelected,
+      handleOnMouseEnterPillAndImageContainer,
+      handleOnMouseLeavePillAndImageContainer,
+      serverHover
     }
   }
 

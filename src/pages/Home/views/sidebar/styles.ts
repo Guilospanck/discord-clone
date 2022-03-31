@@ -58,27 +58,32 @@ export const PillAndImageContainer = styled.div`
   width: 100%;
 `
 
-type PillContainerProps = {
-  index?: number
-}
-
-export const PillContainer = styled.div<PillContainerProps>`
+export const PillContainer = styled.div`
   position: absolute;
   top: 20px;
   left: 0;
 `
 
-export const Pill = styled.span`
-  opacity: 1;
-  height: 8px;
-  transform: none;
+type PillProps = {
+  show: boolean,
+  hovering: boolean
+}
 
+export const Pill = styled.span<PillProps>`
+  opacity: 1;
+  
   position: absolute;
-  display: block;
   width: 8px;
   border-radius: 0 4px 4px 0;
   margin-left: -4px;
   background-color: #FFF;
+  
+  transition: height .3s ease-out, visibility .3s ease-out, transform .3s ease-out;    
+  
+  height: ${props => (props.hovering && !props.show) ? '20' : (props.show ? '40' : '8')}px;    
+  visibility: ${props => props.show || (props.hovering && !props.show) ? 'visible' : 'hidden'};
+  transform: ${props => (props.show) ? 'translateY(-15px)' : 'translateY(-5px)'};
+ 
 `
 
 export const ImageContainer = styled.img`  
