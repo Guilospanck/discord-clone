@@ -1,5 +1,5 @@
 import React, { createContext, FunctionComponent, useMemo, useState } from 'react'
-import { BGSizeCoordinates, ServerInfo } from '../types/homeTypes'
+import { BGSizeCoordinates, ServerInfo, BackgroundPositionsIteratorType } from '../types/homeTypes'
 
 // TODO: remove
 import { serversMocked } from '../../../../__mocks__/homeMocks'
@@ -8,12 +8,7 @@ type HomeContextProps = {
   allServers: ServerInfo[],
   serverSelected: ServerInfo,
   setServerSelected: React.Dispatch<React.SetStateAction<ServerInfo>>,
-  backgroundPositionsIterator: () => IBackgroundPositionsIterator
-}
-
-interface IBackgroundPositionsIterator {
-  hasValue: (idx: number) => boolean
-  next: () => BGSizeCoordinates
+  backgroundPositionsIterator: () => BackgroundPositionsIteratorType
 }
 
 export const HomeContext = createContext<HomeContextProps | null>(null)
@@ -21,6 +16,7 @@ export const HomeContext = createContext<HomeContextProps | null>(null)
 export const HomeContextProvider: FunctionComponent = ({ children }) => {
   const [allServers] = useState<ServerInfo[]>(serversMocked)
   const [serverSelected, setServerSelected] = useState<ServerInfo>(serversMocked[0])
+  // const [messagesFromServer, setMessagesFromServer] = useState<Messages>()
 
   const backgroundPositionsIterator = useMemo(() => {
     const coordinates = [
@@ -56,7 +52,7 @@ export const HomeContextProvider: FunctionComponent = ({ children }) => {
 
     let index = 0
 
-    const iterator = (): IBackgroundPositionsIterator => {
+    const iterator = (): BackgroundPositionsIteratorType => {
       const hasValue = (idx: number): boolean => {
         return coordinates[idx] !== undefined
       }

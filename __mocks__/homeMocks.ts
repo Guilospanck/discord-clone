@@ -153,17 +153,17 @@ export const serversMocked: ServerInfo[] = [
             icon: IconEnum.HASHTAG
           },
           {
-            id: 'b03c4a1c-0955-4e36-a183-c5c07a30a580',
+            id: 'b03c4a1c-0955-4e36-a183-c5c07a30a581',
             spaceTitle: 'cs-config',
             icon: IconEnum.HASHTAG
           },
           {
-            id: '9c4974ad-5a2c-48ba-8b09-5929d79aea0f',
+            id: '9c4974ad-5a2c-48ba-8b09-5929d79aea10',
             spaceTitle: 'dota-config',
             icon: IconEnum.HASHTAG
           },
           {
-            id: 'b749f2ea-0afd-4fcc-ba28-da30d50c8c6f',
+            id: 'b749f2ea-0afd-4fcc-ba28-da30d50c8c70',
             spaceTitle: 'elden-config',
             icon: IconEnum.HASHTAG
           }
@@ -186,51 +186,50 @@ export const serversMocked: ServerInfo[] = [
         ]
       },
       {
-        id: 'c3df4522-f111-4172-b6ea-9f7dced96a46',
+        id: 'c3df4522-f111-4172-b6ea-9f7dced96a47',
         channelTitle: 'voice chat',
         spaces: [
           {
-            id: 'a8de8e8f-e946-4f72-8a40-8dc084284979',
+            id: 'a8de8e8f-e946-4f72-8a40-8dc084284980',
             spaceTitle: 'Général',
             icon: IconEnum.AUDIO
           },
           {
-            id: '1e1a94f6-f014-4c19-b337-2a6f8d080892',
+            id: '1e1a94f6-f014-4c19-b337-2a6f8d080893',
             spaceTitle: 'Play and Stream 🎮',
             icon: IconEnum.AUDIO
           }
         ]
       }
     ]
-  },
-
+  }, // no channels from here on
   {
     id: '5a714803-cb77-4969-92fb-14cdc583d320',
-    serverTitle: 'Server 1',
+    serverTitle: 'Server 5',
     serverIcon: 'https://images.unsplash.com/photo-1582819585091-f807881345ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
     channels: []
   },
   {
     id: '5a714803-cb77-4969-92fb-14cdc583d321',
-    serverTitle: 'Server 1',
+    serverTitle: 'Server 6',
     serverIcon: 'https://images.unsplash.com/photo-1582819585091-f807881345ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
     channels: []
   },
   {
     id: '5a714803-cb77-4969-92fb-14cdc583d322',
-    serverTitle: 'Server 1',
+    serverTitle: 'Server 7',
     serverIcon: 'https://images.unsplash.com/photo-1582819585091-f807881345ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
     channels: []
   },
   {
     id: '5a714803-cb77-4969-92fb-14cdc583d323',
-    serverTitle: 'Server 1',
+    serverTitle: 'Server 8',
     serverIcon: 'https://images.unsplash.com/photo-1582819585091-f807881345ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
     channels: []
   },
   {
     id: '5a714803-cb77-4969-92fb-14cdc583d324',
-    serverTitle: 'Server 1',
+    serverTitle: 'Server 9',
     serverIcon: 'https://images.unsplash.com/photo-1582819585091-f807881345ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
     channels: []
   }

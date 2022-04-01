@@ -34,3 +34,20 @@ export type BGSizeCoordinates = {
   x: number,
   y: number
 }
+
+export type BackgroundPositionsIteratorType = {
+  hasValue: (idx: number) => boolean
+  next: () => BGSizeCoordinates
+}
+
+type Message = {
+  userId: string,
+  timestamp: string,
+  message: string
+}
+
+export type Messages = {
+  serverId: string,
+  channelId: string,
+  messages: Message[]
+}

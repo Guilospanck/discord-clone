@@ -28,11 +28,11 @@ export const ChannelsSidebarView = ({ viewModel }: ChannelsSidebarViewProps) => 
     </ChannelDropdownAndH2>
   )
 
-  const ChannelSpaceListFC = ({ channelsList }: { channelsList: ChannelSpaces[]}) => {
+  const ChannelSpaceListFC = ({ channelId, channelsList }: { channelId: string, channelsList: ChannelSpaces[] }) => {
     const elements = channelsList.map((list) => (
-      <ChannelList key={list.id}>
-        <GetIconFromChannelList icon={list.icon} />
-        <ChannelListH3>{list.spaceTitle}</ChannelListH3>
+      <ChannelList key={`${channelId}-${list.id}`}>
+        <GetIconFromChannelList key={`${channelId}-${list.id}-spaceicon`} icon={list.icon} />
+        <ChannelListH3 key={`${channelId}-${list.id}-spacetitle`}>{list.spaceTitle}</ChannelListH3>
       </ChannelList>
     ))
 
@@ -56,12 +56,12 @@ export const ChannelsSidebarView = ({ viewModel }: ChannelsSidebarViewProps) => 
     <Container>
       {
         viewModel.channels.map((channel: Channel) => (
-          <>
-            <ChannelTitleFC channelTitle={channel.channelTitle} />
-            <ChannelUnorderedList key={channel.id}>
-              <ChannelSpaceListFC channelsList={channel.spaces} />
+          <React.Fragment key={`${channel.id}-fragment`}>
+            <ChannelTitleFC key={`${channel.id}-title`} channelTitle={channel.channelTitle} />
+            <ChannelUnorderedList key={`${channel.id}-spacesul`}>
+              <ChannelSpaceListFC key={`${channel.id}-spaceslist`} channelId={channel.id} channelsList={channel.spaces} />
             </ChannelUnorderedList>
-          </>
+          </React.Fragment>
         ))
       }
     </Container>
