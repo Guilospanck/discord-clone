@@ -33,26 +33,26 @@ This is the frontend part of the attempt of cloning Discord just looking at the 
 ├── assets
 │   └── images
 ├── components
-│   ├── Link
-│   └── Sidebar
-│       ├── viewModels
-│       └── views
+│   └── Link
 ├── pages
 │   └── Home
 │       ├── context
+│       ├── types
 │       ├── useCases
 │       ├── viewModels
 │       │   ├── channels
-│       │   └── chat
+│       │   ├── chat
+│       │   └── sidebar
 │       └── views
 │           ├── channels
 │           │   ├── channels_section
 │           │   ├── channels_server_title
 │           │   └── channels_sidebar
-│           └── chat
-│               ├── chat_form
-│               ├── chat_main
-│               └── chat_section
+│           ├── chat
+│           │   ├── chat_form
+│           │   ├── chat_main
+│           │   └── chat_section
+│           └── sidebar
 └── shared
 ```
 I'm using Clean Code Architecture. Basically it tells us to divide our code into layers, in order to be more testable and to decouple our logic.
@@ -66,6 +66,7 @@ Below it's an overview about the layers I'm using.
 - `shared`: any type of file that can be shared amongst pages and components, like JSON files, configurations, and so on.
 - `pages`: here resides every single page that our application may have. I define page as something that will change routes. Inside each page we have the separation of concerns of the components of these pages.
   - `context`: here is where we can use the React.Context API in order to manage the state of your page through different components.
+  - `types`: here are the basic types we're using in the page.
   - `useCases`: basically every connection with the outside world, like `fetch()`ing a API or something like that.
   - `viewModels`: this layer is responsible to manage what the `views` layer will present. So here resides everything related to data manipulation, like React Hooks and Events.
   - `views`: finally we have the `views` layer. It's responsible for showing the elements to the user. Here we retrieve data from the `viewModels` layer and then show it to the user. Also, here's where we will send events to that layer, like an `onClick` event, for example.
