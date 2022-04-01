@@ -1,11 +1,16 @@
+import { useContext } from 'react'
+import { HomeContext } from '../../context/homeContext'
+
 export type UseChatSectionViewModelReturnType = {
-  channelNameMock: string
+  spaceName: string
 }
 
 export const useChatSectionViewModel = (): UseChatSectionViewModelReturnType => {
-  const channelNameMock = 'texto'
+  const {
+    spaceSelected
+  } = useContext(HomeContext)
 
   return {
-    channelNameMock
+    spaceName: spaceSelected.spaceTitle
   }
 }

@@ -5,7 +5,7 @@ import { Channel, ChannelSpace, IconEnum } from '../../../types/homeTypes'
 import ChannelDropdownSVG from '../../../../../assets/images/Discord-channel-drop.svg'
 import ChannelAudioSVG from '../../../../../assets/images/Discord-audio.svg'
 import ChannelCodeOfConductSVG from '../../../../../assets/images/Discord-code-of-conduct.svg'
-import ChannelHashtagSVG from '../../../../../assets/images/Discord-hashtag.svg'
+import SpaceHashtagSVG from '../../../../../assets/images/Discord-hashtag.svg'
 
 import {
   Container,
@@ -30,7 +30,7 @@ export const ChannelsSidebarView = ({ viewModel }: ChannelsSidebarViewProps) => 
 
   const ChannelSpaceListFC = ({ channelId, channelsList }: { channelId: string, channelsList: ChannelSpace[] }) => {
     const elements = channelsList.map((list) => (
-      <ChannelList key={`${channelId}-${list.id}`}>
+      <ChannelList key={`${channelId}-${list.id}`} onClick={() => viewModel.onSpaceClick(channelId, list.id)}>
         <GetIconFromChannelList key={`${channelId}-${list.id}-spaceicon`} icon={list.icon} />
         <ChannelListH3 key={`${channelId}-${list.id}-spacetitle`}>{list.spaceTitle}</ChannelListH3>
       </ChannelList>
@@ -44,11 +44,11 @@ export const ChannelsSidebarView = ({ viewModel }: ChannelsSidebarViewProps) => 
       case IconEnum.AUDIO:
         return <ChannelAudioSVG width={20} height={20} style={{ marginRight: '6px' }} />
       case IconEnum.HASHTAG:
-        return <ChannelHashtagSVG width={20} height={20} style={{ marginRight: '6px' }} />
+        return <SpaceHashtagSVG width={20} height={20} style={{ marginRight: '6px' }} />
       case IconEnum.DONE_LIST:
         return <ChannelCodeOfConductSVG width={20} height={20} style={{ marginRight: '6px' }} />
       default:
-        return <ChannelHashtagSVG width={20} height={20} style={{ marginRight: '6px' }} />
+        return <SpaceHashtagSVG width={20} height={20} style={{ marginRight: '6px' }} />
     }
   }
 
