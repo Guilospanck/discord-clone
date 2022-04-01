@@ -36,7 +36,6 @@ export type BGSizeCoordinates = {
 }
 
 export type BackgroundPositionsIteratorType = {
-  hasValue: (idx: number) => boolean
   next: () => BGSizeCoordinates
 }
 

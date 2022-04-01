@@ -53,12 +53,12 @@ export const HomeContextProvider: FunctionComponent = ({ children }) => {
     let index = 0
 
     const iterator = (): BackgroundPositionsIteratorType => {
-      const hasValue = (idx: number): boolean => {
+      const _hasValue = (idx: number): boolean => {
         return coordinates[idx] !== undefined
       }
 
       const next = (): BGSizeCoordinates => {
-        if (hasValue(index + 1)) {
+        if (_hasValue(index + 1)) {
           index++
         } else {
           index = 0
@@ -67,7 +67,6 @@ export const HomeContextProvider: FunctionComponent = ({ children }) => {
       }
 
       return {
-        hasValue,
         next
       }
     }
