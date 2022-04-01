@@ -1,12 +1,12 @@
 import { useCallback, useContext, useState } from 'react'
 import { HomeContext } from '../../context/homeContext'
-import { ServerInfo } from '../../types/homeTypes'
+import { Server } from '../../types/homeTypes'
 
 export type UseSidebarViewModelReturnType = {
-  allServers: ServerInfo[],
+  allServers: Server[],
   DISCORD_LOGO_COLOR: string,
   handleSidebarLinkClick: (serverIdx: number) => void,
-  serverSelected: ServerInfo,
+  serverSelected: Server,
   handleOnMouseEnterPillAndImageContainer: (serverId: string) => void,
   handleOnMouseLeavePillAndImageContainer: (serverId: string) => void,
   serverHover: {}

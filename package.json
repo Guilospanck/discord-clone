@@ -17,7 +17,8 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
-    "styled-components": "^5.3.1"
+    "styled-components": "^5.3.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.16.11",
@@ -32,6 +33,7 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.14",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.17.0",
     "@typescript-eslint/parser": "^5.17.0",
     "babel-jest": "^27.5.1",

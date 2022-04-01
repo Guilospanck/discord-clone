@@ -64,7 +64,7 @@ export const ChatFormView = ({ viewModel }: ChatFormViewProps) => {
         contentEditable
         ref={viewModel.messageRef}
         onKeyDown={(e) => viewModel.onKeyDown(e)}
-        placeholder="Message #texto"
+        placeholder={`Message #${viewModel.channelTitle}`}
       />
     </TextContainer>
   )

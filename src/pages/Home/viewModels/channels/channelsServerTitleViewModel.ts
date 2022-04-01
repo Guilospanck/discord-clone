@@ -2,13 +2,15 @@ import { useContext } from 'react'
 import { HomeContext } from '../../context/homeContext'
 
 export type UseChannelsServerTitleViewModelReturnType = {
-  serverTitle: string
+  title: string
 }
 
 export const useChannelsServerTitleViewModel = (): UseChannelsServerTitleViewModelReturnType => {
   const { serverSelected } = useContext(HomeContext)
 
+  const { title } = serverSelected
+
   return {
-    serverTitle: serverSelected.serverTitle
+    title
   }
 }

@@ -26,14 +26,14 @@ export const Section = styled.section`
   box-shadow: 0 1px 0 rgb(4 4 5 / 20%), 0 1.5px 0 rgb(6 6 7 / 5%), 0 2px 0 rgb(4 4 5 / 5%);
 `
 
-export const SpaceNameAndIcon = styled.div`
+export const ChannelNameAndIcon = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
 `
 
-export const SpaceIcon = styled.div`
+export const ChannelIcon = styled.div`
   display: flex;
   flex: 0 0 auto;
   height: 24px;
@@ -42,7 +42,7 @@ export const SpaceIcon = styled.div`
   color: ${TEXT_MUTED};
 `
 
-export const SpaceName = styled.h3`
+export const ChannelName = styled.h3`
   justify-content: flex-start;
   margin: 0 8px 0 0;
   flex: 0 0 auto;

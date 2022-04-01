@@ -1,29 +1,31 @@
 import { useContext } from 'react'
 import { HomeContext } from '../../context/homeContext'
-import { Channel } from '../../types/homeTypes'
+import { Category } from '../../types/homeTypes'
 
 export type UseChannelsSidebarViewModelReturnType = {
-  channels: Channel[],
-  onSpaceClick: (channelId: string, spaceId: string) => void
+  categories: Category[],
+  onChannelClick: (categoryId: string, channelId: string) => void
 }
 
 export const useChannelsSidebarViewModel = (): UseChannelsSidebarViewModelReturnType => {
   const {
     serverSelected,
-    setChannelSelected,
-    setSpaceSelected
+    setCategorySelected,
+    setChannelSelected
   } = useContext(HomeContext)
 
-  const onSpaceClick = (channelId: string, spaceId: string) => {
-    const channelSelected = serverSelected.channels.find(channel => channel.id === channelId)
-    const spaceSelected = channelSelected.spaces.find(space => space.id === spaceId)
+  const { categories } = serverSelected
 
+  const onChannelClick = (categoryId: string, channelId: string) => {
+    const categorySelected = serverSelected.categories.find(category => category.id === categoryId)
+    const channelSelected = categorySelected.channels.find(channel => channel.id === channelId)
+
+    setCategorySelected(categorySelected)
     setChannelSelected(channelSelected)
-    setSpaceSelected(spaceSelected)
   }
 
   return {
-    channels: serverSelected.channels,
-    onSpaceClick
+    categories,
+    onChannelClick
   }
 }

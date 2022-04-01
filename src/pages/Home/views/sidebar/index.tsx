@@ -50,7 +50,7 @@ export const SidebarView = ({ viewModel }: SideBarViewProps) => {
                 />
               </PillContainer>
               <LinkStyled
-                key={`${server.serverTitle}-${index}`}
+                key={`${server.title}-${index}`}
                 height={48}
                 width={48}
                 onClickFn={viewModel.handleSidebarLinkClick}
@@ -58,7 +58,7 @@ export const SidebarView = ({ viewModel }: SideBarViewProps) => {
               >
 
                 <ImageContainer
-                  src={server.serverIcon}
+                  src={server.icon}
                   alt={`Icon of server ${server}`}
                 />
               </LinkStyled>

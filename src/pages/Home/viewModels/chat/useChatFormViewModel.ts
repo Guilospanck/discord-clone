@@ -1,37 +1,35 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { HomeContext } from '../../context/homeContext'
-import { GetMessagesFromChannelSpaceUsecaseReturnType } from '../../useCases/getMessagesFromChannelSpaceUsecase'
+import { BGSizeCoordinates } from '../../types/homeTypes'
+import { GetMessagesFromChannelUsecaseReturnType } from '../../useCases/getMessagesFromChannelUsecase'
 import { SaveMessageUsecaseReturnType } from '../../useCases/saveMessageUsecase'
-
-type EmojiCoordinatesType = {
-  x: number,
-  y: number
-}
 
 export type UseChatFormViewModelReturnType = {
   messageRef: React.MutableRefObject<HTMLDivElement>,
   onKeyDown: (e: React.KeyboardEvent<HTMLDivElement>) => void,
   onMouseEnterEmojiBtn: () => void,
-  emojiCoordinates: EmojiCoordinatesType
+  emojiCoordinates: BGSizeCoordinates,
+  channelTitle: string
 }
 
 type UseChatFormViewModelProps = {
   saveMessageUsecase: SaveMessageUsecaseReturnType,
-  getMessagesFromChannelSpaceUsecase: GetMessagesFromChannelSpaceUsecaseReturnType
+  getMessagesFromChannelSpaceUsecase: GetMessagesFromChannelUsecaseReturnType
 }
 
 export const useChatFormViewModel = ({ saveMessageUsecase, getMessagesFromChannelSpaceUsecase }: UseChatFormViewModelProps): UseChatFormViewModelReturnType => {
   const {
     backgroundPositionsIterator,
     serverSelected,
+    categorySelected,
     channelSelected,
-    spaceSelected,
     currentUser,
-    setMessages
+    setMessages,
+    channelTitle
   } = useContext(HomeContext)
 
   const messageRef = useRef<HTMLDivElement>(null)
-  const [emojiCoordinates, setEmojiCoordinates] = useState<EmojiCoordinatesType>({ x: 0, y: 0 })
+  const [emojiCoordinates, setEmojiCoordinates] = useState<BGSizeCoordinates>({ x: 0, y: 0 })
   const [update, setUpdate] = useState(false)
 
   useEffect(() => {
@@ -54,8 +52,8 @@ export const useChatFormViewModel = ({ saveMessageUsecase, getMessagesFromChanne
   const _saveAndUpdateMessages = (message: string) => {
     const paramsObj = {
       serverId: serverSelected.id,
-      channelId: channelSelected.id,
-      spaceId: spaceSelected.id
+      categoryId: categorySelected.id,
+      channelId: channelSelected.id
     }
 
     // saves message
@@ -75,6 +73,7 @@ export const useChatFormViewModel = ({ saveMessageUsecase, getMessagesFromChanne
     messageRef,
     onKeyDown,
     onMouseEnterEmojiBtn,
-    emojiCoordinates
+    emojiCoordinates,
+    channelTitle
   }
 }

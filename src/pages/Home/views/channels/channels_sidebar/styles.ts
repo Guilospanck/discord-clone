@@ -18,7 +18,7 @@ export const Container = styled.nav`
   margin-top: 16px;  
   justify-content: flex-start;
 `
-export const ChannelDropdownAndH2 = styled.div`
+export const CategoryDropdownAndH2 = styled.div`
   height: 24px;
   padding-right: 8px;
   padding-left: 0px;
@@ -34,7 +34,7 @@ export const ChannelDropdownAndH2 = styled.div`
   }
 `
 
-export const ChannelH2 = styled.h2`
+export const CategoryH2 = styled.h2`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;

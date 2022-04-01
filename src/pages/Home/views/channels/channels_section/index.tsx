@@ -23,7 +23,7 @@ export const ChannelsSectionView = ({ viewModel }: ChannelsSectionViewProps) => 
   return (
     <Section>
       <Avatar>
-        <img src={viewModel.imageURL} alt=" " aria-hidden="true" />
+        <img src={viewModel.avatarURL} alt=" " aria-hidden="true" />
       </Avatar>
       <UserNameAndTag>
         <UserName>{viewModel.name}</UserName>

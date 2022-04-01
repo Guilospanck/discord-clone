@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react'
 import { HomeContext } from '../../context/homeContext'
-import { GetMessagesFromChannelSpaceUsecaseReturnType } from '../../useCases/getMessagesFromChannelSpaceUsecase'
+import { GetMessagesFromChannelUsecaseReturnType } from '../../useCases/getMessagesFromChannelUsecase'
 import { MessageWithUserInfo } from '../../types/homeTypes'
 
 export type UseChatMainViewModelReturnType = {
@@ -8,46 +8,50 @@ export type UseChatMainViewModelReturnType = {
 }
 
 type useChatMainViewModelProps = {
-  getMessagesFromChannelSpaceUsecase: GetMessagesFromChannelSpaceUsecaseReturnType
+  getMessagesFromChannelSpaceUsecase: GetMessagesFromChannelUsecaseReturnType
 }
 
 export const useChatMainViewModel = ({ getMessagesFromChannelSpaceUsecase }: useChatMainViewModelProps): UseChatMainViewModelReturnType => {
   const {
     serverSelected,
+    categorySelected,
     channelSelected,
-    spaceSelected,
-    setSpaceSelected,
+    setChannelSelected,
     messages, setMessages
   } = useContext(HomeContext)
 
+  /** Effect triggered when changing servers using the sidebar component.
+   *  It'll take the first channel of the first category of the server
+   *  selected in order to load the right messages.
+   */
   useEffect(() => {
-    const firstChannelOfServer = serverSelected?.channels[0]
-    if (!firstChannelOfServer) {
+    const firstCategoryOfServer = serverSelected?.categories[0]
+    if (!firstCategoryOfServer) {
       setMessages([])
     }
 
-    const firstSpaceOfFirstChannel = firstChannelOfServer?.spaces[0]
-    if (!firstSpaceOfFirstChannel) {
+    const firstChannelOfFirstCategory = firstCategoryOfServer?.channels[0]
+    if (!firstChannelOfFirstCategory) {
       setMessages([])
-      setSpaceSelected(null)
+      setChannelSelected(null)
     }
 
-    setSpaceSelected(firstSpaceOfFirstChannel)
+    setChannelSelected(firstChannelOfFirstCategory)
   }, [serverSelected])
 
   useEffect(() => {
-    if (!serverSelected?.id || !channelSelected?.id || !spaceSelected?.id) {
+    if (!serverSelected?.id || !categorySelected?.id || !channelSelected?.id) {
       return
     }
 
     const msgs = getMessagesFromChannelSpaceUsecase.getMessagesWithUserInfo({
       serverId: serverSelected.id,
-      channelId: channelSelected.id,
-      spaceId: spaceSelected.id
+      categoryId: categorySelected.id,
+      channelId: channelSelected.id
     })
 
     setMessages(msgs)
-  }, [spaceSelected])
+  }, [channelSelected])
 
   return {
     messages

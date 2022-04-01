@@ -17,7 +17,7 @@ export const ChannelsServerTitleView = ({ viewModel }: ServerTitleViewProps) => 
   return (
     <ServerTitleContainer>
       <ServerTitleHeader>
-        <ServerTitleH1>{viewModel.serverTitle}</ServerTitleH1>
+        <ServerTitleH1>{viewModel.title}</ServerTitleH1>
         <ServerTitleDropdown>
           <DiscordDropdownSVG />
         </ServerTitleDropdown>

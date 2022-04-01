@@ -2,15 +2,15 @@ import { useContext } from 'react'
 import { HomeContext } from '../../context/homeContext'
 
 export type UseChatSectionViewModelReturnType = {
-  spaceName: string
+  channelTitle: string
 }
 
 export const useChatSectionViewModel = (): UseChatSectionViewModelReturnType => {
   const {
-    spaceSelected
+    channelTitle
   } = useContext(HomeContext)
 
   return {
-    spaceName: spaceSelected?.spaceTitle ?? ''
+    channelTitle
   }
 }

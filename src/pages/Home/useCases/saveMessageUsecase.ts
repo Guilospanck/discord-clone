@@ -1,26 +1,31 @@
+import { v4 as uuidv4 } from 'uuid'
 import { Messages } from '../types/homeTypes'
 
 export type SaveMessageUsecaseReturnType = {
-  save: ({ serverId, channelId, spaceId, userId, message }: SaveProps) => void
+  save: ({ serverId, categoryId, channelId, userId, message }: SaveProps) => void
 }
 
 type SaveProps = {
   serverId: string,
+  categoryId: string,
   channelId: string,
-  spaceId: string,
   userId: string,
   message: string
 }
 
 export const SaveMessageUsecase = (): SaveMessageUsecaseReturnType => {
-  const save = ({ serverId, channelId, spaceId, userId, message }: SaveProps): void => {
+  const save = ({ serverId, categoryId, channelId, userId, message }: SaveProps): void => {
     const timestamp = new Date().getTime().toString()
+    const messagesId = uuidv4()
+    const messageId = uuidv4()
 
     const messageToSave: Messages = {
+      id: messagesId,
       serverId,
+      categoryId,
       channelId,
-      spaceId,
       messages: [{
+        id: messageId,
         userId,
         timestamp,
         message

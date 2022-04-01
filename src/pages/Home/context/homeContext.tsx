@@ -1,37 +1,49 @@
-import React, { createContext, FunctionComponent, useMemo, useState } from 'react'
-import { BGSizeCoordinates, ServerInfo, BackgroundPositionsIteratorType, Channel, ChannelSpace, MessageWithUserInfo, UserInfo } from '../types/homeTypes'
+import React, { createContext, FunctionComponent, useEffect, useMemo, useState } from 'react'
+import { BGSizeCoordinates, Server, BackgroundPositionsIteratorType, Category, Channel, MessageWithUserInfo, User } from '../types/homeTypes'
 
 // TODO: remove
 import { serversMocked, usersMocked } from '../../../../__mocks__/homeMocks'
 
 type HomeContextProps = {
-  allServers: ServerInfo[],
-  serverSelected: ServerInfo,
-  setServerSelected: React.Dispatch<React.SetStateAction<ServerInfo>>,
-  backgroundPositionsIterator: () => BackgroundPositionsIteratorType,
+  allServers: Server[],
+  serverSelected: Server,
+  setServerSelected: React.Dispatch<React.SetStateAction<Server>>,
+  categorySelected: Category,
+  setCategorySelected: React.Dispatch<React.SetStateAction<Category>>,
   channelSelected: Channel,
   setChannelSelected: React.Dispatch<React.SetStateAction<Channel>>,
-  spaceSelected: ChannelSpace,
-  setSpaceSelected: React.Dispatch<React.SetStateAction<ChannelSpace>>,
   messages: MessageWithUserInfo[],
   setMessages: React.Dispatch<React.SetStateAction<MessageWithUserInfo[]>>,
-  currentUser: UserInfo
+  currentUser: User,
+  backgroundPositionsIterator: () => BackgroundPositionsIteratorType,
+  channelTitle: string
 }
 
 export const HomeContext = createContext<HomeContextProps | null>(null)
 
 export const HomeContextProvider: FunctionComponent = ({ children }) => {
-  /** Servers, Channels, Spaces */
-  const [allServers] = useState<ServerInfo[]>(serversMocked)
-  const [serverSelected, setServerSelected] = useState<ServerInfo>(serversMocked[0])
-  const [channelSelected, setChannelSelected] = useState<Channel>(serversMocked[0].channels[0])
-  const [spaceSelected, setSpaceSelected] = useState<ChannelSpace>(serversMocked[0].channels[0].spaces[0])
+  /** Servers, Categories, Channels */
+  const [allServers] = useState<Server[]>(serversMocked)
+  const [serverSelected, setServerSelected] = useState<Server>(serversMocked[0])
+  const [categorySelected, setCategorySelected] = useState<Category>(serversMocked[0].categories[0])
+  const [channelSelected, setChannelSelected] = useState<Channel>(serversMocked[0].categories[0].channels[0])
+  const [channelTitle, setChannelTitle] = useState<string>(channelSelected?.title ?? '')
 
   /** User */
-  const [currentUser] = useState<UserInfo>(usersMocked[0])
+  const [currentUser] = useState<User>(usersMocked[0])
 
   /** Messages */
   const [messages, setMessages] = useState<MessageWithUserInfo[]>([])
+
+  useEffect(() => {
+    let title = ''
+
+    if (channelSelected) {
+      title = channelSelected.title
+    }
+
+    setChannelTitle(title)
+  }, [channelSelected])
 
   const backgroundPositionsIterator = useMemo(() => {
     const coordinates = [
@@ -93,14 +105,15 @@ export const HomeContextProvider: FunctionComponent = ({ children }) => {
     allServers,
     serverSelected,
     setServerSelected,
+    categorySelected,
+    setCategorySelected,
     channelSelected,
     setChannelSelected,
-    spaceSelected,
-    setSpaceSelected,
     backgroundPositionsIterator,
     messages,
     setMessages,
-    currentUser
+    currentUser,
+    channelTitle
   }
 
   return <HomeContext.Provider value={defaultContext}>{children}</HomeContext.Provider>

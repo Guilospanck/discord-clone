@@ -1,6 +1,6 @@
 import React from 'react'
 import { UseChatSectionViewModelReturnType } from '~/pages/Home/viewModels/chat/useChatSectionViewModel'
-import SpaceHashtagSVG from '../../../../../assets/images/Discord-hashtag.svg'
+import ChannelHashtagSVG from '../../../../../assets/images/Discord-hashtag.svg'
 
 import ThreadsSVG from '../../../../../assets/images/Discord-threads.svg'
 import AlarmsSVG from '../../../../../assets/images/Discord-alarms.svg'
@@ -12,9 +12,9 @@ import HelpSVG from '../../../../../assets/images/Discord-help.svg'
 
 import {
   Section,
-  SpaceNameAndIcon,
-  SpaceIcon,
-  SpaceName,
+  ChannelNameAndIcon,
+  ChannelIcon,
+  ChannelName,
   ButtonIconsContainer,
   ButtonIcon,
   InputAndIconContainer,
@@ -27,15 +27,15 @@ type ChatSectionProps = {
 }
 
 export const ChatSectionView = ({ viewModel }: ChatSectionProps) => {
-  const SpaceNameAndIconFC = () => (
-    <SpaceNameAndIcon>
-      <SpaceIcon>
-        <SpaceHashtagSVG />
-      </SpaceIcon>
-      <SpaceName>
-        {viewModel.spaceName}
-      </SpaceName>
-    </SpaceNameAndIcon>
+  const ChannelNameAndIconFC = () => (
+    <ChannelNameAndIcon>
+      <ChannelIcon>
+        <ChannelHashtagSVG />
+      </ChannelIcon>
+      <ChannelName>
+        {viewModel.channelTitle}
+      </ChannelName>
+    </ChannelNameAndIcon>
   )
 
   const ButtonIconsContainerFC = () => (
@@ -59,7 +59,7 @@ export const ChatSectionView = ({ viewModel }: ChatSectionProps) => {
 
   return (
     <Section>
-      <SpaceNameAndIconFC />
+      <ChannelNameAndIconFC />
       <ButtonIconsContainerFC />
     </Section>
   )

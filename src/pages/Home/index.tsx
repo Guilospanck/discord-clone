@@ -22,7 +22,7 @@ import { useChatMainViewModel } from './viewModels/chat/useChatMainViewModel'
 import { useChatFormViewModel } from './viewModels/chat/useChatFormViewModel'
 
 /** useCases */
-import { GetMessagesFromChannelSpaceUsecase } from './useCases/getMessagesFromChannelSpaceUsecase'
+import { GetMessagesFromChannelUsecase } from './useCases/getMessagesFromChannelUsecase'
 import { GetUserByUserIdUsecase } from './useCases/getUserByUserIdUsecase'
 import { SaveMessageUsecase } from './useCases/saveMessageUsecase'
 
@@ -65,14 +65,14 @@ const ChatSectionComponent = () => {
 
 const ChatMainComponent = () => {
   const getUserByUserIdUsecase = GetUserByUserIdUsecase()
-  const getMessagesFromChannelSpaceUsecase = GetMessagesFromChannelSpaceUsecase({ getUserByUserIdUsecase })
+  const getMessagesFromChannelSpaceUsecase = GetMessagesFromChannelUsecase({ getUserByUserIdUsecase })
   const viewModel = useChatMainViewModel({ getMessagesFromChannelSpaceUsecase })
   return <ChatMainView viewModel={viewModel} />
 }
 
 const ChatFormComponent = () => {
   const getUserByUserIdUsecase = GetUserByUserIdUsecase()
-  const getMessagesFromChannelSpaceUsecase = GetMessagesFromChannelSpaceUsecase({ getUserByUserIdUsecase })
+  const getMessagesFromChannelSpaceUsecase = GetMessagesFromChannelUsecase({ getUserByUserIdUsecase })
   const saveMessageUsecase = SaveMessageUsecase()
   const viewModel = useChatFormViewModel({ saveMessageUsecase, getMessagesFromChannelSpaceUsecase })
   return <ChatFormView viewModel={viewModel} />

@@ -1,19 +1,20 @@
-import { useState } from 'react'
+import { useContext } from 'react'
+import { HomeContext } from '../../context/homeContext'
 
 export type UseChannelsSectionViewModelReturnType = {
   name: string,
   tag: string,
-  imageURL: string
+  avatarURL: string
 }
 
 export const useChannelsSectionViewModel = (): UseChannelsSectionViewModelReturnType => {
-  const [name] = useState('guilospanck')
-  const [tag] = useState('#1042')
-  const [imageURL] = useState('https://cdn.discordapp.com/avatars/759237066999201852/e780bd32be2d3b5e78179ddc8da20e77.webp?size=32')
+  const { currentUser } = useContext(HomeContext)
+
+  const { name, tag, avatarURL } = currentUser
 
   return {
     name,
     tag,
-    imageURL
+    avatarURL
   }
 }
