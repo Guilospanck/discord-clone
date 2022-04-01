@@ -11,6 +11,6 @@ export const useChatSectionViewModel = (): UseChatSectionViewModelReturnType => 
   } = useContext(HomeContext)
 
   return {
-    spaceName: spaceSelected.spaceTitle
+    spaceName: spaceSelected?.spaceTitle ?? ''
   }
 }
