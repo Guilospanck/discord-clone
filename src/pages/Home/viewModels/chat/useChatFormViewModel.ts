@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useRef, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { HomeContext } from '../../context/homeContext'
 import { GetMessagesFromChannelSpaceUsecaseReturnType } from '../../useCases/getMessagesFromChannelSpaceUsecase'
 import { SaveMessageUsecaseReturnType } from '../../useCases/saveMessageUsecase'
@@ -32,6 +32,10 @@ export const useChatFormViewModel = ({ saveMessageUsecase, getMessagesFromChanne
 
   const messageRef = useRef<HTMLDivElement>(null)
   const [emojiCoordinates, setEmojiCoordinates] = useState<EmojiCoordinatesType>({ x: 0, y: 0 })
+
+  useEffect(() => {
+    messageRef.current.focus()
+  }, [messageRef])
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
