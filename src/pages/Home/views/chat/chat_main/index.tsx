@@ -19,22 +19,26 @@ type ChatMainViewProps = {
 export const ChatMainView = ({ viewModel }: ChatMainViewProps) => {
   return (
     <Article>
-      <MessageContainer>
-        <Avatar
-          src="https://cdn.discordapp.com/avatars/759237066999201852/e780bd32be2d3b5e78179ddc8da20e77.webp?size=80"
-          aria-hidden="true"
-          alt=" "
-        />
-        <UsernameAndTimestampContainer>
-          <Username>guilospanck</Username>
-          <TimestampContainer>
-            <Timestamp>Today at 6:11pm</Timestamp>
-          </TimestampContainer>
-        </UsernameAndTimestampContainer>
-        <MessageContent>
-          {viewModel.mockedText}
-        </MessageContent>
-      </MessageContainer>
+      {
+        viewModel.messages.map((msg, idx) => (
+          <MessageContainer key={`${msg.id}-${idx}`}>
+            <Avatar
+              src={msg.avatarURL}
+              aria-hidden="true"
+              alt=" "
+            />
+            <UsernameAndTimestampContainer>
+              <Username>{msg.name}</Username>
+              <TimestampContainer>
+                <Timestamp>{new Date(Number(msg.timestamp)).toLocaleDateString('pt-br')}</Timestamp>
+              </TimestampContainer>
+            </UsernameAndTimestampContainer>
+            <MessageContent>
+              {msg.message}
+            </MessageContent>
+          </MessageContainer>
+        ))
+      }
     </Article>
   )
 }

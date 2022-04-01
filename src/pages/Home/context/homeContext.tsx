@@ -1,5 +1,5 @@
 import React, { createContext, FunctionComponent, useMemo, useState } from 'react'
-import { BGSizeCoordinates, ServerInfo, BackgroundPositionsIteratorType } from '../types/homeTypes'
+import { BGSizeCoordinates, ServerInfo, BackgroundPositionsIteratorType, Channel, ChannelSpace } from '../types/homeTypes'
 
 // TODO: remove
 import { serversMocked } from '../../../../__mocks__/homeMocks'
@@ -8,15 +8,21 @@ type HomeContextProps = {
   allServers: ServerInfo[],
   serverSelected: ServerInfo,
   setServerSelected: React.Dispatch<React.SetStateAction<ServerInfo>>,
-  backgroundPositionsIterator: () => BackgroundPositionsIteratorType
+  backgroundPositionsIterator: () => BackgroundPositionsIteratorType,
+  channelSelected: Channel,
+  setChannelSelected: React.Dispatch<React.SetStateAction<Channel>>,
+  spaceSelected: ChannelSpace,
+  setSpaceSelected: React.Dispatch<React.SetStateAction<ChannelSpace>>
 }
 
 export const HomeContext = createContext<HomeContextProps | null>(null)
 
 export const HomeContextProvider: FunctionComponent = ({ children }) => {
+  /** Servers, Channels, Spaces */
   const [allServers] = useState<ServerInfo[]>(serversMocked)
   const [serverSelected, setServerSelected] = useState<ServerInfo>(serversMocked[0])
-  // const [messagesFromServer, setMessagesFromServer] = useState<Messages>()
+  const [channelSelected, setChannelSelected] = useState<Channel>(serversMocked[0].channels[0])
+  const [spaceSelected, setSpaceSelected] = useState<ChannelSpace>(serversMocked[0].channels[0].spaces[0])
 
   const backgroundPositionsIterator = useMemo(() => {
     const coordinates = [
@@ -78,6 +84,10 @@ export const HomeContextProvider: FunctionComponent = ({ children }) => {
     allServers,
     serverSelected,
     setServerSelected,
+    channelSelected,
+    setChannelSelected,
+    spaceSelected,
+    setSpaceSelected,
     backgroundPositionsIterator
   }
 

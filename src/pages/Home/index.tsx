@@ -21,6 +21,10 @@ import { useChatSectionViewModel } from './viewModels/chat/useChatSectionViewMod
 import { useChatMainViewModel } from './viewModels/chat/useChatMainViewModel'
 import { useChatFormViewModel } from './viewModels/chat/useChatFormViewModel'
 
+/** useCases */
+import { GetMessagesFromChannelSpaceUsecase } from './useCases/getMessagesFromChannelSpaceUsecase'
+import { GetUserByUserIdUsecase } from './useCases/getUserByUserIdUsecase'
+
 /** Context */
 import { HomeContextProvider } from './context/homeContext'
 
@@ -59,7 +63,9 @@ const ChatSectionComponent = () => {
 }
 
 const ChatMainComponent = () => {
-  const viewModel = useChatMainViewModel()
+  const getUserByUserIdUsecase = GetUserByUserIdUsecase()
+  const getMessagesFromChannelSpaceUsecase = GetMessagesFromChannelSpaceUsecase({ getUserByUserIdUsecase })
+  const viewModel = useChatMainViewModel({ getMessagesFromChannelSpaceUsecase })
   return <ChatMainView viewModel={viewModel} />
 }
 

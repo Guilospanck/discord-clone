@@ -11,7 +11,7 @@ export enum IconEnum {
   DONE_LIST
 }
 
-export type ChannelSpaces = {
+export type ChannelSpace = {
   id: string,
   spaceTitle: string,
   icon: IconEnum
@@ -20,7 +20,7 @@ export type ChannelSpaces = {
 export type Channel = {
   id: string,
   channelTitle: string,
-  spaces: ChannelSpaces[]
+  spaces: ChannelSpace[]
 }
 
 export type ServerInfo = {
@@ -39,7 +39,7 @@ export type BackgroundPositionsIteratorType = {
   next: () => BGSizeCoordinates
 }
 
-type Message = {
+export type Message = {
   userId: string,
   timestamp: string,
   message: string
@@ -48,5 +48,8 @@ type Message = {
 export type Messages = {
   serverId: string,
   channelId: string,
+  spaceId: string,
   messages: Message[]
 }
+
+export type MessageWithUserInfo = Message & UserInfo

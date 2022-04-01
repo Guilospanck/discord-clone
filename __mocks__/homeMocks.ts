@@ -1,4 +1,4 @@
-import { ServerInfo, IconEnum } from '../src/pages/Home/types/homeTypes'
+import { ServerInfo, IconEnum, UserInfo, Messages } from '../src/pages/Home/types/homeTypes'
 
 export const serversMocked: ServerInfo[] = [
   {
@@ -232,5 +232,56 @@ export const serversMocked: ServerInfo[] = [
     serverTitle: 'Server 9',
     serverIcon: 'https://images.unsplash.com/photo-1582819585091-f807881345ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
     channels: []
+  }
+]
+
+export const usersMocked: UserInfo[] = [
+  {
+    id: '20e5201c-bf61-44ef-90b5-4610d78a034a',
+    name: 'thiagort',
+    tag: '#819',
+    avatarURL: 'https://cdn.discordapp.com/avatars/891765898086580334/7e4995919829ea66117e85fa4574acc3.webp?size=128'
+  },
+  {
+    id: '9d45b212-194f-4090-9ea3-3a62f39f04c3',
+    name: 'Igor',
+    tag: '#457',
+    avatarURL: 'https://cdn.discordapp.com/avatars/211169928164671489/380376c68b8241de68985f56fc1d201c.webp?size=80'
+  },
+  {
+    id: '45e48ab1-9d1f-4496-bd21-6aaeba2955ab',
+    name: 'Hydra',
+    tag: '#1214',
+    avatarURL: 'https://cdn.discordapp.com/avatars/547905866255433758/2fcb77582acae7ecedd97db9c238c1f3.webp?size=80'
+  }
+]
+
+export const messagesMocked: Messages[] = [
+  {
+    serverId: serversMocked[0].id,
+    channelId: serversMocked[0].channels[0].id,
+    spaceId: serversMocked[0].channels[0].spaces[0].id,
+    messages: [
+      {
+        userId: usersMocked[0].id,
+        timestamp: '1648822189389',
+        message: 'Hi, this is a test!'
+      },
+      {
+        userId: usersMocked[1].id,
+        timestamp: '1648822230197',
+        message: 'Hi! It looks nice!'
+      },
+      {
+        userId: usersMocked[0].id,
+        timestamp: '1648822267057',
+        message: 'Yes! Even though it is a test!'
+      },
+      {
+        userId: usersMocked[0].id,
+        timestamp: '1648822267057',
+        message: 'Let us see if this message comes without my avatar...'
+      }
+    ]
   }
 ]

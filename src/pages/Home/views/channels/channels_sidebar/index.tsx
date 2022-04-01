@@ -1,6 +1,6 @@
 import React from 'react'
 import { UseChannelsSidebarViewModelReturnType } from '~/pages/Home/viewModels/channels/channelsSidebarViewModel'
-import { Channel, ChannelSpaces, IconEnum } from '../../../types/homeTypes'
+import { Channel, ChannelSpace, IconEnum } from '../../../types/homeTypes'
 
 import ChannelDropdownSVG from '../../../../../assets/images/Discord-channel-drop.svg'
 import ChannelAudioSVG from '../../../../../assets/images/Discord-audio.svg'
@@ -28,7 +28,7 @@ export const ChannelsSidebarView = ({ viewModel }: ChannelsSidebarViewProps) => 
     </ChannelDropdownAndH2>
   )
 
-  const ChannelSpaceListFC = ({ channelId, channelsList }: { channelId: string, channelsList: ChannelSpaces[] }) => {
+  const ChannelSpaceListFC = ({ channelId, channelsList }: { channelId: string, channelsList: ChannelSpace[] }) => {
     const elements = channelsList.map((list) => (
       <ChannelList key={`${channelId}-${list.id}`}>
         <GetIconFromChannelList key={`${channelId}-${list.id}-spaceicon`} icon={list.icon} />
