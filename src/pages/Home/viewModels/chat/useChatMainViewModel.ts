@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import { HomeContext } from '../../context/homeContext'
 import { GetMessagesFromChannelSpaceUsecaseReturnType } from '../../useCases/getMessagesFromChannelSpaceUsecase'
 import { MessageWithUserInfo } from '../../types/homeTypes'
@@ -15,19 +15,18 @@ export const useChatMainViewModel = ({ getMessagesFromChannelSpaceUsecase }: use
   const {
     serverSelected,
     channelSelected,
-    spaceSelected
+    spaceSelected,
+    messages, setMessages
   } = useContext(HomeContext)
 
-  const [messages, setMessages] = useState<MessageWithUserInfo[]>([])
-
   useEffect(() => {
-    const messages = getMessagesFromChannelSpaceUsecase.getMessagesWithUserInfo({
+    const msgs = getMessagesFromChannelSpaceUsecase.getMessagesWithUserInfo({
       serverId: serverSelected.id,
       channelId: channelSelected.id,
       spaceId: spaceSelected.id
     })
 
-    setMessages(messages)
+    setMessages(msgs)
   }, [spaceSelected])
 
   return {

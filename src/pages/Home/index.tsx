@@ -24,6 +24,7 @@ import { useChatFormViewModel } from './viewModels/chat/useChatFormViewModel'
 /** useCases */
 import { GetMessagesFromChannelSpaceUsecase } from './useCases/getMessagesFromChannelSpaceUsecase'
 import { GetUserByUserIdUsecase } from './useCases/getUserByUserIdUsecase'
+import { SaveMessageUsecase } from './useCases/saveMessageUsecase'
 
 /** Context */
 import { HomeContextProvider } from './context/homeContext'
@@ -70,7 +71,10 @@ const ChatMainComponent = () => {
 }
 
 const ChatFormComponent = () => {
-  const viewModel = useChatFormViewModel()
+  const getUserByUserIdUsecase = GetUserByUserIdUsecase()
+  const getMessagesFromChannelSpaceUsecase = GetMessagesFromChannelSpaceUsecase({ getUserByUserIdUsecase })
+  const saveMessageUsecase = SaveMessageUsecase()
+  const viewModel = useChatFormViewModel({ saveMessageUsecase, getMessagesFromChannelSpaceUsecase })
   return <ChatFormView viewModel={viewModel} />
 }
 

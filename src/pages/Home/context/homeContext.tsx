@@ -1,8 +1,8 @@
 import React, { createContext, FunctionComponent, useMemo, useState } from 'react'
-import { BGSizeCoordinates, ServerInfo, BackgroundPositionsIteratorType, Channel, ChannelSpace } from '../types/homeTypes'
+import { BGSizeCoordinates, ServerInfo, BackgroundPositionsIteratorType, Channel, ChannelSpace, MessageWithUserInfo, UserInfo } from '../types/homeTypes'
 
 // TODO: remove
-import { serversMocked } from '../../../../__mocks__/homeMocks'
+import { serversMocked, usersMocked } from '../../../../__mocks__/homeMocks'
 
 type HomeContextProps = {
   allServers: ServerInfo[],
@@ -12,7 +12,10 @@ type HomeContextProps = {
   channelSelected: Channel,
   setChannelSelected: React.Dispatch<React.SetStateAction<Channel>>,
   spaceSelected: ChannelSpace,
-  setSpaceSelected: React.Dispatch<React.SetStateAction<ChannelSpace>>
+  setSpaceSelected: React.Dispatch<React.SetStateAction<ChannelSpace>>,
+  messages: MessageWithUserInfo[],
+  setMessages: React.Dispatch<React.SetStateAction<MessageWithUserInfo[]>>,
+  currentUser: UserInfo
 }
 
 export const HomeContext = createContext<HomeContextProps | null>(null)
@@ -23,6 +26,12 @@ export const HomeContextProvider: FunctionComponent = ({ children }) => {
   const [serverSelected, setServerSelected] = useState<ServerInfo>(serversMocked[0])
   const [channelSelected, setChannelSelected] = useState<Channel>(serversMocked[0].channels[0])
   const [spaceSelected, setSpaceSelected] = useState<ChannelSpace>(serversMocked[0].channels[0].spaces[0])
+
+  /** User */
+  const [currentUser] = useState<UserInfo>(usersMocked[0])
+
+  /** Messages */
+  const [messages, setMessages] = useState<MessageWithUserInfo[]>([])
 
   const backgroundPositionsIterator = useMemo(() => {
     const coordinates = [
@@ -88,7 +97,10 @@ export const HomeContextProvider: FunctionComponent = ({ children }) => {
     setChannelSelected,
     spaceSelected,
     setSpaceSelected,
-    backgroundPositionsIterator
+    backgroundPositionsIterator,
+    messages,
+    setMessages,
+    currentUser
   }
 
   return <HomeContext.Provider value={defaultContext}>{children}</HomeContext.Provider>
