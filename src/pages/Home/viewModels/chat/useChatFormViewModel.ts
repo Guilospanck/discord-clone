@@ -32,10 +32,11 @@ export const useChatFormViewModel = ({ saveMessageUsecase, getMessagesFromChanne
 
   const messageRef = useRef<HTMLDivElement>(null)
   const [emojiCoordinates, setEmojiCoordinates] = useState<EmojiCoordinatesType>({ x: 0, y: 0 })
+  const [update, setUpdate] = useState(false)
 
   useEffect(() => {
     messageRef.current.focus()
-  }, [messageRef])
+  }, [messageRef, update])
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -67,6 +68,7 @@ export const useChatFormViewModel = ({ saveMessageUsecase, getMessagesFromChanne
     // updates messages state
     const messages = getMessagesFromChannelSpaceUsecase.getMessagesWithUserInfo({ ...paramsObj })
     setMessages(messages)
+    setUpdate(!update)
   }
 
   return {
