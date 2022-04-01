@@ -25,6 +25,30 @@ type ChatFormViewProps = {
   viewModel: UseChatFormViewModelReturnType
 }
 
+type GetEmojiProps = {
+  x: number, y: number,
+  onMouseEnterFn: () => void
+}
+
+/** This function is outside the main one to prevent re-rendering
+ *  when hovering over the emoji button
+ */
+const EmojisButtonsFC = React.memo(({ x, y, onMouseEnterFn }: GetEmojiProps) => (
+  <ButtonContainer>
+    <ButtonImage><GiftButtonSVG /></ButtonImage>
+    <ButtonImage><GifButtonSVG /></ButtonImage>
+    <ButtonImage><StickerButtonSVG /></ButtonImage>
+    <ButtonImage onMouseEnter={() => onMouseEnterFn()}>
+      <ImgStyled
+        urlImg={EmojiPNG}
+        bgPositionX={x}
+        bgPositionY={y}
+      />
+    </ButtonImage>
+  </ButtonContainer>
+))
+EmojisButtonsFC.displayName = 'EmojisButtonsFC' // eslint
+
 export const ChatFormView = ({ viewModel }: ChatFormViewProps) => {
   const AddButtonFC = () => (
     <AddButtonContainer>
@@ -45,28 +69,17 @@ export const ChatFormView = ({ viewModel }: ChatFormViewProps) => {
     </TextContainer>
   )
 
-  const EmojisButtonsFC = () => (
-    <ButtonContainer>
-      <ButtonImage><GiftButtonSVG /></ButtonImage>
-      <ButtonImage><GifButtonSVG /></ButtonImage>
-      <ButtonImage><StickerButtonSVG /></ButtonImage>
-      <ButtonImage onMouseEnter={() => viewModel.onMouseEnterEmojiBtn()}>
-        <ImgStyled
-          urlImg={EmojiPNG}
-          bgPositionX={viewModel.BACKGROUND_POSITIONS[viewModel.emojiRandomnessIndex].x}
-          bgPositionY={viewModel.BACKGROUND_POSITIONS[viewModel.emojiRandomnessIndex].y}
-        />
-      </ButtonImage>
-    </ButtonContainer>
-  )
-
   return (
     <Form>
       <ScrollableContainer>
         <InnerContainerWithMessagesAndButtons>
           <AddButtonFC />
           <MessageInputFC />
-          <EmojisButtonsFC />
+          <EmojisButtonsFC
+            x={viewModel.emojiCoordinates.x}
+            y={viewModel.emojiCoordinates.y}
+            onMouseEnterFn={viewModel.onMouseEnterEmojiBtn}
+          />
         </InnerContainerWithMessagesAndButtons>
       </ScrollableContainer>
     </Form>

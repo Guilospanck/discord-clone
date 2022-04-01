@@ -29,3 +29,8 @@ export type ServerInfo = {
   serverIcon: string,
   channels: Channel[]
 }
+
+export type BGSizeCoordinates = {
+  x: number,
+  y: number
+}

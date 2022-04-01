@@ -45,7 +45,7 @@ export const ServersContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2%;
+  gap: 1.2%;
   width: 100%;
   height: 100%;
 `
