@@ -32,7 +32,8 @@ export const SaveMessageUsecase = (): SaveMessageUsecaseReturnType => {
   }
 
   const _saveToLocalStorage = (messageToSave: Messages): void => {
-    const messagesFromLocalStorage: Messages[] = JSON.parse(localStorage.getItem('messages'))
+    const msgInLocalStorage = localStorage.getItem('messages') ? JSON.parse(localStorage.getItem('messages')) : []
+    const messagesFromLocalStorage: Messages[] = msgInLocalStorage
     const messageToSaveIntoLocalStorage: Messages[] = [
       ...messagesFromLocalStorage,
       messageToSave

@@ -237,6 +237,12 @@ export const serversMocked: ServerInfo[] = [
 
 export const usersMocked: UserInfo[] = [
   {
+    id: '943849ea-e76d-4fd1-ae59-bf0dd7bbe55a',
+    name: 'guilospanck',
+    tag: '#104',
+    avatarURL: 'https://cdn.discordapp.com/avatars/759237066999201852/e780bd32be2d3b5e78179ddc8da20e77.webp?size=32'
+  },
+  {
     id: '20e5201c-bf61-44ef-90b5-4610d78a034a',
     name: 'thiagort',
     tag: '#819',
