@@ -36,6 +36,9 @@ export const useChatFormViewModel = ({ saveMessageUsecase, getMessagesFromChanne
     if (messageRef.current) {
       messageRef.current.focus()
     }
+
+    messageRef.current.contentEditable = !categorySelected || !channelSelected ? 'false' : 'true'
+    setUpdate(!update)
   }, [messageRef, update, serverSelected])
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
@@ -68,6 +71,8 @@ export const useChatFormViewModel = ({ saveMessageUsecase, getMessagesFromChanne
     // updates messages state
     const messages = getMessagesFromChannelSpaceUsecase.getMessagesWithUserInfo({ ...paramsObj })
     setMessages(messages)
+
+    messageRef.current.innerText = ''
     setUpdate(!update)
   }
 
