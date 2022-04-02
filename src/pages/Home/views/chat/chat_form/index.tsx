@@ -49,6 +49,23 @@ const EmojisButtonsFC = React.memo(({ x, y, onMouseEnterFn }: GetEmojiProps) => 
 ))
 EmojisButtonsFC.displayName = 'EmojisButtonsFC' // eslint
 
+type MessageInputFCProps = {
+  messageRef: React.MutableRefObject<HTMLDivElement>,
+  onKeyDownFn: (e: React.KeyboardEvent<HTMLDivElement>) => void,
+  channelTitle: string
+}
+
+const MessageInputFC = ({ messageRef, onKeyDownFn, channelTitle }: MessageInputFCProps) => (
+  <TextContainer>
+    <TextContentEditable
+      contentEditable
+      ref={messageRef}
+      onKeyDown={(e) => onKeyDownFn(e)}
+      placeholder={`Message #${channelTitle}`}
+    />
+  </TextContainer>
+)
+
 export const ChatFormView = ({ viewModel }: ChatFormViewProps) => {
   const AddButtonFC = () => (
     <AddButtonContainer>
@@ -58,23 +75,16 @@ export const ChatFormView = ({ viewModel }: ChatFormViewProps) => {
     </AddButtonContainer>
   )
 
-  const MessageInputFC = () => (
-    <TextContainer>
-      <TextContentEditable
-        contentEditable
-        ref={viewModel.messageRef}
-        onKeyDown={(e) => viewModel.onKeyDown(e)}
-        placeholder={`Message #${viewModel.channelTitle}`}
-      />
-    </TextContainer>
-  )
-
   return (
     <Form>
       <ScrollableContainer>
         <InnerContainerWithMessagesAndButtons>
           <AddButtonFC />
-          <MessageInputFC />
+          <MessageInputFC
+            messageRef={viewModel.messageRef}
+            onKeyDownFn={viewModel.onKeyDown}
+            channelTitle={viewModel.channelTitle}
+          />
           <EmojisButtonsFC
             x={viewModel.emojiCoordinates.x}
             y={viewModel.emojiCoordinates.y}

@@ -33,8 +33,10 @@ export const useChatFormViewModel = ({ saveMessageUsecase, getMessagesFromChanne
   const [update, setUpdate] = useState(false)
 
   useEffect(() => {
-    messageRef.current.focus()
-  }, [messageRef, update])
+    if (messageRef.current) {
+      messageRef.current.focus()
+    }
+  }, [messageRef, update, serverSelected])
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
