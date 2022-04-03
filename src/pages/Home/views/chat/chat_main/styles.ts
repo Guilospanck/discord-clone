@@ -105,3 +105,33 @@ export const MessageContent = styled.div`
   user-select: text;
   font-weight: 400;
 `
+
+export const DayDivider = styled.div`
+  height: 0;
+  border-top: thin solid rgba(79,84,92,0.48);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+  pointer-events: none;
+  box-sizing: border-box;
+
+  margin-top: 1.5rem;
+  margin-bottom: .5rem;
+  margin-left: 1rem;
+  margin-right: .875rem;
+`
+
+export const SpanDayDivider = styled.span`
+  display: block;
+  flex: 0 0 auto;
+  padding: 2px 4px;
+  color: #a3a6aa;
+  background: #36393f;
+  line-height: 13px;
+  font-size: 12px;
+  margin-top: -1px;
+  font-weight: 600;
+  border-radius: 8px;
+`

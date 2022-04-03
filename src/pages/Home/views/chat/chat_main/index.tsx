@@ -10,7 +10,9 @@ import {
   Username,
   TimestampContainer,
   Timestamp,
-  MessageContent
+  MessageContent,
+  DayDivider,
+  SpanDayDivider
 } from './styles'
 
 const RenderMessagesFromUser = ({ messages }: { messages: Message[] }) => {
@@ -25,7 +27,7 @@ const RenderMessagesFromUser = ({ messages }: { messages: Message[] }) => {
   return <>{elements}</>
 }
 
-const RenderUserNameAvatarAndTimestamp = ({ avatarURL, name, timestamp }: { avatarURL: string, name: string, timestamp: string }) => (
+const RenderUserNameAvatarAndTimestamp = ({ avatarURL, name, date }: { avatarURL: string, name: string, date: string }) => (
   <>
     <Avatar
       src={avatarURL}
@@ -34,32 +36,36 @@ const RenderUserNameAvatarAndTimestamp = ({ avatarURL, name, timestamp }: { avat
     />
     <UsernameAndTimestampContainer>
       <Username>{name}</Username>
-      {
-        timestamp && (
-          <TimestampContainer>
-            <Timestamp>{new Date(Number(timestamp)).toLocaleDateString('pt-br')}</Timestamp>
-          </TimestampContainer>
-        )
-      }
+      <TimestampContainer>
+        <Timestamp>{date}</Timestamp>
+      </TimestampContainer>
     </UsernameAndTimestampContainer>
   </>
 )
 
-const RenderMessagesAndUserInformation = ({ user, messages, index }: { user: User, messages: Message[], index: number }) => {
-  const randomId = messages.length ? messages[0].id : 'random'
-
+const RenderMessagesAndUserInformation = ({ user, messages, index, nextDay }: { user: User, messages: Message[], index: number, nextDay: boolean }) => {
   if (!user || !messages.length) return <></>
 
+  const date = messages[0]?.timestamp ? new Date(Number(messages[0].timestamp)).toLocaleDateString('pt-br') : ''
+
   return (
-    <MessageContainer key={`${user.id}-${index}-${randomId}`}>
-      <RenderUserNameAvatarAndTimestamp
-        key={`${user.id}-${index}-${randomId}-user_info`}
-        avatarURL={user.avatarURL}
-        name={user.name}
-        timestamp={messages[0]?.timestamp ?? ''}
-      />
-      <RenderMessagesFromUser messages={messages} />
-    </MessageContainer>
+    <>
+      {
+        nextDay &&
+        <DayDivider>
+          <SpanDayDivider>{date}</SpanDayDivider>
+        </DayDivider>
+      }
+      <MessageContainer key={`${user.id}-${index}-${messages[0].id}`}>
+        <RenderUserNameAvatarAndTimestamp
+          key={`${user.id}-${index}-${messages[0].id}-user_info`}
+          avatarURL={user.avatarURL}
+          name={user.name}
+          date={date}
+        />
+        <RenderMessagesFromUser messages={messages} />
+      </MessageContainer>
+    </>
   )
 }
 
@@ -76,6 +82,7 @@ export const ChatMainView = ({ viewModel }: ChatMainViewProps) => {
             key={`${msg.user.id}-${idx}-${msg.messages[0]?.timestamp ?? ''}`}
             user={msg.user}
             messages={msg.messages}
+            nextDay={msg.nextDay}
             index={idx}
           />
         ))

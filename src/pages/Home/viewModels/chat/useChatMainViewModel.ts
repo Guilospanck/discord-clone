@@ -18,7 +18,8 @@ export const useChatMainViewModel = ({ getMessagesFromChannelSpaceUsecase }: use
     channelSelected,
     setChannelSelected,
     messages, setMessages,
-    GetAllConsecutiveMessagesFromUser
+    getAllConsecutiveMessagesFromUser,
+    UpdateMessagesToSinalizeNextDay
   } = useContext(HomeContext)
 
   /** Effect triggered when changing servers using the sidebar component.
@@ -54,9 +55,12 @@ export const useChatMainViewModel = ({ getMessagesFromChannelSpaceUsecase }: use
     if (!msgs || msgs.length === 0) return
 
     /** get all consecutive messages from user */
-    const messagesDividedByUser = GetAllConsecutiveMessagesFromUser({ msgs })
+    const messagesDividedByUser = getAllConsecutiveMessagesFromUser({ msgs })
 
-    setMessages(messagesDividedByUser)
+    /** Add 'nextDay' if is new date */
+    const updatedMessages = UpdateMessagesToSinalizeNextDay({ msgs: messagesDividedByUser }).update()
+
+    setMessages(updatedMessages)
   }, [channelSelected])
 
   return {

@@ -56,6 +56,7 @@ export type Messages = {
 }
 
 export type MessageWithUserInfo = {
-  messages: Message[]
-  user: User
+  messages: Message[],
+  user: User,
+  nextDay?: boolean
 }

@@ -4,6 +4,10 @@ import { BGSizeCoordinates, Server, BackgroundPositionsIteratorType, Category, C
 // TODO: remove
 import { serversMocked, usersMocked } from '../../../../__mocks__/homeMocks'
 
+type UpdateMessagesToSinalizeNextDayReturnType = {
+  update: () => MessageWithUserInfo[]
+}
+
 type HomeContextProps = {
   allServers: Server[],
   serverSelected: Server,
@@ -17,7 +21,8 @@ type HomeContextProps = {
   currentUser: User,
   backgroundPositionsIterator: () => BackgroundPositionsIteratorType,
   channelTitle: string,
-  GetAllConsecutiveMessagesFromUser: ({ msgs }: { msgs: MessageWithUserInfo[] }) => MessageWithUserInfo[]
+  getAllConsecutiveMessagesFromUser: ({ msgs }: { msgs: MessageWithUserInfo[] }) => MessageWithUserInfo[],
+  UpdateMessagesToSinalizeNextDay: ({ msgs }: { msgs: MessageWithUserInfo[] }) => UpdateMessagesToSinalizeNextDayReturnType
 }
 
 export const HomeContext = createContext<HomeContextProps | null>(null)
@@ -102,7 +107,7 @@ export const HomeContextProvider: FunctionComponent = ({ children }) => {
   }, [])
 
   /** Get all consecutive messages from user */
-  const GetAllConsecutiveMessagesFromUser = ({ msgs }: { msgs: MessageWithUserInfo[] }) => {
+  const getAllConsecutiveMessagesFromUser = ({ msgs }: { msgs: MessageWithUserInfo[] }): MessageWithUserInfo[] => {
     const messagesDividedByUser = msgs.reduce((prev: MessageWithUserInfo[], curr: MessageWithUserInfo) => {
       const lastElem = prev[prev.length - 1]
       if (lastElem?.user?.id === curr?.user?.id) {
@@ -125,6 +130,62 @@ export const HomeContextProvider: FunctionComponent = ({ children }) => {
     return messagesDividedByUser
   }
 
+  /** Add 'nextDay' if is new date */
+  const UpdateMessagesToSinalizeNextDay = ({ msgs }: { msgs: MessageWithUserInfo[] }): UpdateMessagesToSinalizeNextDayReturnType => {
+    const datesAlreadySetForChannelMap = new Map<string, boolean>()
+
+    const getMapPattern = (timestamp: string): string => {
+      const localeDate = getFormatedDate(timestamp)
+      const PATTERN = `${channelSelected.id}-${localeDate}`
+
+      return PATTERN
+    }
+
+    const getDataInMap = (timestamp: string): boolean => {
+      const PATTERN = getMapPattern(timestamp)
+
+      const hasKey = datesAlreadySetForChannelMap.get(PATTERN)
+      if (!hasKey) return false
+
+      return true
+    }
+
+    const setDataInMap = (timestamp: string): void => {
+      const PATTERN = getMapPattern(timestamp)
+
+      datesAlreadySetForChannelMap.set(PATTERN, true)
+    }
+
+    const getFormatedDate = (timestamp: string): string => new Date(Number(timestamp)).toLocaleDateString('pt-br')
+
+    const verifyIfDateAlreadySetInMap = (timestamp: string): boolean => {
+      if (!channelSelected) return true
+      return getDataInMap(timestamp)
+    }
+
+    const update = (): MessageWithUserInfo[] => (
+      msgs.map(item => {
+        if (item.messages?.length) {
+          const timestamp = item.messages[0].timestamp
+
+          if (!verifyIfDateAlreadySetInMap(timestamp)) {
+            setDataInMap(timestamp)
+            return {
+              ...item,
+              nextDay: true
+            }
+          }
+        }
+
+        return item
+      })
+    )
+
+    return {
+      update
+    }
+  }
+
   const defaultContext: HomeContextProps = {
     allServers,
     serverSelected,
@@ -138,7 +199,8 @@ export const HomeContextProvider: FunctionComponent = ({ children }) => {
     setMessages,
     currentUser,
     channelTitle,
-    GetAllConsecutiveMessagesFromUser
+    getAllConsecutiveMessagesFromUser,
+    UpdateMessagesToSinalizeNextDay
   }
 
   return <HomeContext.Provider value={defaultContext}>{children}</HomeContext.Provider>
