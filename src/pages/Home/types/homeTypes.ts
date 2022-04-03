@@ -55,4 +55,7 @@ export type Messages = {
   messages: Message[]
 }
 
-export type MessageWithUserInfo = Message & User
+export type MessageWithUserInfo = {
+  messages: Message[]
+  user: User
+}

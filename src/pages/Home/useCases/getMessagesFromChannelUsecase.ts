@@ -48,8 +48,8 @@ export const GetMessagesFromChannelUsecase = ({ getUserByUserIdUsecase }: GetMes
       const userInfo: User = getUserByUserIdUsecase.get(msg.userId)
 
       return {
-        ...msg,
-        ...userInfo
+        messages: [msg],
+        user: userInfo
       }
     })
   }

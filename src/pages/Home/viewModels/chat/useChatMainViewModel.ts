@@ -4,7 +4,7 @@ import { GetMessagesFromChannelUsecaseReturnType } from '../../useCases/getMessa
 import { MessageWithUserInfo } from '../../types/homeTypes'
 
 export type UseChatMainViewModelReturnType = {
-  messages: MessageWithUserInfo[]
+  messages: MessageWithUserInfo[],
 }
 
 type useChatMainViewModelProps = {
@@ -50,7 +50,29 @@ export const useChatMainViewModel = ({ getMessagesFromChannelSpaceUsecase }: use
       channelId: channelSelected.id
     })
 
-    setMessages(msgs)
+    if (!msgs || msgs.length === 0) return
+
+    /** get all consecutive messages from user */
+    const messagesDividedByUser = msgs.reduce((prev: MessageWithUserInfo[], curr: MessageWithUserInfo) => {
+      const lastElem = prev[prev.length - 1]
+      if (lastElem?.user?.id === curr?.user?.id) {
+        const prevSlice = prev.slice(0, -1)
+        return [
+          ...prevSlice,
+          {
+            user: curr?.user,
+            messages: [
+              ...lastElem.messages,
+              curr.messages[0]
+            ]
+          }
+        ]
+      }
+
+      return [...prev, curr]
+    }, [])
+
+    setMessages(messagesDividedByUser)
   }, [channelSelected])
 
   return {
