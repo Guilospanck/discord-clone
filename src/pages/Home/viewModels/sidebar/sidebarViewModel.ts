@@ -15,13 +15,14 @@ export type UseSidebarViewModelReturnType = {
 export const useSidebarViewModel = (): UseSidebarViewModelReturnType => {
   const DISCORD_LOGO_COLOR = '#5865F2'
 
-  const { allServers, serverSelected, setServerSelected, setCategorySelected } = useContext(HomeContext)
+  const { allServers, serverSelected, setServerSelected, setCategorySelected, setMessages } = useContext(HomeContext)
 
   const [serverHover, setServerHover] = useState({})
 
   const handleSidebarLinkClick = useCallback((serverIdx: number): void => {
     const server = allServers[serverIdx]
 
+    setMessages([])
     setServerSelected(server)
     setCategorySelected(server.categories.length > 0 ? server.categories[0] : null)
   }, [])
