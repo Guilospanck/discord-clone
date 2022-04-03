@@ -54,7 +54,7 @@ export const useChatFormViewModel = ({ saveMessageUsecase, getMessagesFromChanne
       const message = messageRef.current.innerText
       _saveAndUpdateMessages(message)
     }
-  }, [])
+  }, [channelSelected])
 
   const onMouseEnterEmojiBtn = useCallback(() => {
     const nextCoordinates = backgroundPositionsIterator().next()

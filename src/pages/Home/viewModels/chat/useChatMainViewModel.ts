@@ -28,14 +28,12 @@ export const useChatMainViewModel = ({ getMessagesFromChannelSpaceUsecase }: use
    */
   useEffect(() => {
     const firstCategoryOfServer = serverSelected?.categories[0]
-    if (!firstCategoryOfServer) {
-      setMessages([])
-    }
-
     const firstChannelOfFirstCategory = firstCategoryOfServer?.channels[0]
-    if (!firstChannelOfFirstCategory) {
+
+    if (!firstCategoryOfServer || !firstChannelOfFirstCategory) {
       setMessages([])
       setChannelSelected(null)
+      return
     }
 
     setChannelSelected(firstChannelOfFirstCategory)
@@ -52,7 +50,10 @@ export const useChatMainViewModel = ({ getMessagesFromChannelSpaceUsecase }: use
       channelId: channelSelected.id
     })
 
-    if (!msgs || msgs.length === 0) return
+    if (!msgs || msgs.length === 0) {
+      setMessages([])
+      return
+    }
 
     /** get all consecutive messages from user */
     const messagesDividedByUser = getAllConsecutiveMessagesFromUser({ msgs })
