@@ -17,7 +17,8 @@ export const useChatMainViewModel = ({ getMessagesFromChannelSpaceUsecase }: use
     categorySelected,
     channelSelected,
     setChannelSelected,
-    messages, setMessages
+    messages, setMessages,
+    GetAllConsecutiveMessagesFromUser
   } = useContext(HomeContext)
 
   /** Effect triggered when changing servers using the sidebar component.
@@ -53,24 +54,7 @@ export const useChatMainViewModel = ({ getMessagesFromChannelSpaceUsecase }: use
     if (!msgs || msgs.length === 0) return
 
     /** get all consecutive messages from user */
-    const messagesDividedByUser = msgs.reduce((prev: MessageWithUserInfo[], curr: MessageWithUserInfo) => {
-      const lastElem = prev[prev.length - 1]
-      if (lastElem?.user?.id === curr?.user?.id) {
-        const prevSlice = prev.slice(0, -1)
-        return [
-          ...prevSlice,
-          {
-            user: curr?.user,
-            messages: [
-              ...lastElem.messages,
-              curr.messages[0]
-            ]
-          }
-        ]
-      }
-
-      return [...prev, curr]
-    }, [])
+    const messagesDividedByUser = GetAllConsecutiveMessagesFromUser({ msgs })
 
     setMessages(messagesDividedByUser)
   }, [channelSelected])

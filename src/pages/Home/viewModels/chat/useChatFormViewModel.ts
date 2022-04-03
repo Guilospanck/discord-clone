@@ -25,7 +25,8 @@ export const useChatFormViewModel = ({ saveMessageUsecase, getMessagesFromChanne
     channelSelected,
     currentUser,
     setMessages,
-    channelTitle
+    channelTitle,
+    GetAllConsecutiveMessagesFromUser
   } = useContext(HomeContext)
 
   const messageRef = useRef<HTMLDivElement>(null)
@@ -74,8 +75,11 @@ export const useChatFormViewModel = ({ saveMessageUsecase, getMessagesFromChanne
     })
 
     // updates messages state
-    const messages = getMessagesFromChannelSpaceUsecase.getMessagesWithUserInfo({ ...paramsObj })
-    setMessages(messages)
+    const msgs = getMessagesFromChannelSpaceUsecase.getMessagesWithUserInfo({ ...paramsObj })
+
+    /** get all consecutive messages from user */
+    const messagesDividedByUser = GetAllConsecutiveMessagesFromUser({ msgs })
+    setMessages(messagesDividedByUser)
 
     messageRef.current.innerText = ''
     setUpdate(!update)

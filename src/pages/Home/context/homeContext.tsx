@@ -16,7 +16,8 @@ type HomeContextProps = {
   setMessages: React.Dispatch<React.SetStateAction<MessageWithUserInfo[]>>,
   currentUser: User,
   backgroundPositionsIterator: () => BackgroundPositionsIteratorType,
-  channelTitle: string
+  channelTitle: string,
+  GetAllConsecutiveMessagesFromUser: ({ msgs }: { msgs: MessageWithUserInfo[] }) => MessageWithUserInfo[]
 }
 
 export const HomeContext = createContext<HomeContextProps | null>(null)
@@ -100,6 +101,30 @@ export const HomeContextProvider: FunctionComponent = ({ children }) => {
     return iterator
   }, [])
 
+  /** Get all consecutive messages from user */
+  const GetAllConsecutiveMessagesFromUser = ({ msgs }: { msgs: MessageWithUserInfo[] }) => {
+    const messagesDividedByUser = msgs.reduce((prev: MessageWithUserInfo[], curr: MessageWithUserInfo) => {
+      const lastElem = prev[prev.length - 1]
+      if (lastElem?.user?.id === curr?.user?.id) {
+        const prevSlice = prev.slice(0, -1)
+        return [
+          ...prevSlice,
+          {
+            user: curr?.user,
+            messages: [
+              ...lastElem.messages,
+              curr.messages[0]
+            ]
+          }
+        ]
+      }
+
+      return [...prev, curr]
+    }, [])
+
+    return messagesDividedByUser
+  }
+
   const defaultContext: HomeContextProps = {
     allServers,
     serverSelected,
@@ -112,7 +137,8 @@ export const HomeContextProvider: FunctionComponent = ({ children }) => {
     messages,
     setMessages,
     currentUser,
-    channelTitle
+    channelTitle,
+    GetAllConsecutiveMessagesFromUser
   }
 
   return <HomeContext.Provider value={defaultContext}>{children}</HomeContext.Provider>
