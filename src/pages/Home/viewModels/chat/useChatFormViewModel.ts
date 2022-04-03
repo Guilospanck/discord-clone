@@ -31,15 +31,19 @@ export const useChatFormViewModel = ({ saveMessageUsecase, getMessagesFromChanne
   const messageRef = useRef<HTMLDivElement>(null)
   const [emojiCoordinates, setEmojiCoordinates] = useState<BGSizeCoordinates>({ x: 0, y: 0 })
   const [update, setUpdate] = useState(false)
+  const [updateInputField, setUpdateInputField] = useState(false)
 
   useEffect(() => {
-    if (!categorySelected || !channelSelected || !messageRef.current) {
+    if (!categorySelected || categorySelected.channels.length === 0 || !messageRef.current) {
       messageRef.current.contentEditable = 'false'
+      messageRef.current.blur()
+      setUpdateInputField(!updateInputField)
       return
     }
 
     messageRef.current.contentEditable = 'true'
     messageRef.current.focus()
+    setUpdateInputField(!updateInputField)
   }, [messageRef, update, serverSelected])
 
   const onKeyDown = useCallback((e: React.KeyboardEvent<HTMLDivElement>) => {

@@ -15,12 +15,15 @@ export type UseSidebarViewModelReturnType = {
 export const useSidebarViewModel = (): UseSidebarViewModelReturnType => {
   const DISCORD_LOGO_COLOR = '#5865F2'
 
-  const { allServers, serverSelected, setServerSelected } = useContext(HomeContext)
+  const { allServers, serverSelected, setServerSelected, setCategorySelected } = useContext(HomeContext)
 
   const [serverHover, setServerHover] = useState({})
 
   const handleSidebarLinkClick = useCallback((serverIdx: number): void => {
-    setServerSelected(allServers[serverIdx])
+    const server = allServers[serverIdx]
+
+    setServerSelected(server)
+    setCategorySelected(server.categories.length > 0 ? server.categories[0] : null)
   }, [])
 
   const handleOnMouseEnterPillAndImageContainer = useCallback((serverId: string): void => {
