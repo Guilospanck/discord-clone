@@ -10,9 +10,11 @@ This is the frontend part of the attempt of cloning Discord just looking at the 
 ![Dependabot](https://img.shields.io/badge/dependabot-025E8C?logo=dependabot&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?logo=githubactions&logoColor=white)
 
-<p align="center">
+<div align="center">
 ➡️ 👷🚧 <b>Under Construction...</b>
-</p>
+
+You can find it @ [Discord Clone](https://guilospanck.github.io/discord-clone/)
+</div>
 
 ## Technologies
 - React v18 with TypeScript from scratch
