@@ -33,21 +33,22 @@ export const useChatFormViewModel = ({ saveMessageUsecase, getMessagesFromChanne
   const [update, setUpdate] = useState(false)
 
   useEffect(() => {
-    if (messageRef.current) {
-      messageRef.current.focus()
+    if (!categorySelected || !channelSelected || !messageRef.current) {
+      messageRef.current.contentEditable = 'false'
+      return
     }
 
-    messageRef.current.contentEditable = !categorySelected || !channelSelected ? 'false' : 'true'
-    setUpdate(!update)
+    messageRef.current.contentEditable = 'true'
+    messageRef.current.focus()
   }, [messageRef, update, serverSelected])
 
-  const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+  const onKeyDown = useCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
       const message = messageRef.current.innerText
       _saveAndUpdateMessages(message)
     }
-  }
+  }, [])
 
   const onMouseEnterEmojiBtn = useCallback(() => {
     const nextCoordinates = backgroundPositionsIterator().next()

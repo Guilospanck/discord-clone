@@ -36,8 +36,11 @@ export const HomeContextProvider: FunctionComponent = ({ children }) => {
   const [messages, setMessages] = useState<MessageWithUserInfo[]>([])
 
   useEffect(() => {
-    let title = ''
+    setCategorySelected(serverSelected.categories.length > 0 ? serverSelected.categories[0] : null)
+  }, [serverSelected])
 
+  useEffect(() => {
+    let title = ''
     if (channelSelected) {
       title = channelSelected.title
     }

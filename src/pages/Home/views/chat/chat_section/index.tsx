@@ -22,6 +22,26 @@ import {
   MagnifyingGlassContainer
 } from './styles'
 
+const ButtonIconsContainerFC = React.memo(() => (
+  <ButtonIconsContainer>
+    <ButtonIcon><ThreadsSVG /></ButtonIcon>
+    <ButtonIcon><AlarmsSVG /></ButtonIcon>
+    <ButtonIcon><PinSVG /></ButtonIcon>
+    <ButtonIcon><MemberListSVG /></ButtonIcon>
+
+    <InputAndIconContainer>
+      <InputStyled placeholder="Search" />
+      <MagnifyingGlassContainer>
+        <MagnifyingGlassSVG />
+      </MagnifyingGlassContainer>
+    </InputAndIconContainer>
+
+    <ButtonIcon><InboxSVG /></ButtonIcon>
+    <ButtonIcon><HelpSVG /></ButtonIcon>
+  </ButtonIconsContainer>
+))
+ButtonIconsContainerFC.displayName = 'ButtonIconsContainerFC' // eslint
+
 type ChatSectionProps = {
   viewModel: UseChatSectionViewModelReturnType
 }
@@ -36,25 +56,6 @@ export const ChatSectionView = ({ viewModel }: ChatSectionProps) => {
         {viewModel.channelTitle}
       </ChannelName>
     </ChannelNameAndIcon>
-  )
-
-  const ButtonIconsContainerFC = () => (
-    <ButtonIconsContainer>
-      <ButtonIcon><ThreadsSVG /></ButtonIcon>
-      <ButtonIcon><AlarmsSVG /></ButtonIcon>
-      <ButtonIcon><PinSVG /></ButtonIcon>
-      <ButtonIcon><MemberListSVG /></ButtonIcon>
-
-      <InputAndIconContainer>
-        <InputStyled placeholder="Search" />
-        <MagnifyingGlassContainer>
-          <MagnifyingGlassSVG />
-        </MagnifyingGlassContainer>
-      </InputAndIconContainer>
-
-      <ButtonIcon><InboxSVG /></ButtonIcon>
-      <ButtonIcon><HelpSVG /></ButtonIcon>
-    </ButtonIconsContainer>
   )
 
   return (

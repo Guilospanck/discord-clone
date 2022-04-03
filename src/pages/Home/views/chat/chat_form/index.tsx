@@ -55,7 +55,7 @@ type MessageInputFCProps = {
   channelTitle: string
 }
 
-const MessageInputFC = ({ messageRef, onKeyDownFn, channelTitle }: MessageInputFCProps) => (
+const MessageInputFC = React.memo(({ messageRef, onKeyDownFn, channelTitle }: MessageInputFCProps) => (
   <TextContainer>
     <TextContentEditable
       contentEditable
@@ -64,17 +64,19 @@ const MessageInputFC = ({ messageRef, onKeyDownFn, channelTitle }: MessageInputF
       placeholder={`Message #${channelTitle}`}
     />
   </TextContainer>
+))
+MessageInputFC.displayName = 'MessageInputFC' // eslint
+
+const AddButtonFC = () => (
+  <AddButtonContainer>
+    <AddButton>
+      <AddButtonSVG />
+    </AddButton>
+  </AddButtonContainer>
 )
+AddButtonFC.displayName = 'AddButtonFC' // eslint
 
 export const ChatFormView = ({ viewModel }: ChatFormViewProps) => {
-  const AddButtonFC = () => (
-    <AddButtonContainer>
-      <AddButton>
-        <AddButtonSVG />
-      </AddButton>
-    </AddButtonContainer>
-  )
-
   return (
     <Form>
       <ScrollableContainer>
