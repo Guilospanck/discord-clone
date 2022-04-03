@@ -72,3 +72,26 @@ Below it's an overview about the layers I'm using.
   - `useCases`: basically every connection with the outside world, like `fetch()`ing a API or something like that.
   - `viewModels`: this layer is responsible to manage what the `views` layer will present. So here resides everything related to data manipulation, like React Hooks and Events.
   - `views`: finally we have the `views` layer. It's responsible for showing the elements to the user. Here we retrieve data from the `viewModels` layer and then show it to the user. Also, here's where we will send events to that layer, like an `onClick` event, for example.
+
+
+## Checklist Features
+- Frontend
+    - [x] It shall have a MVP presenting some key concepts of Discord design.
+    - [x] It shall be able to send messages and show those message in the main chat.
+    - [x] It shall be able to change between servers and channels.
+    - [ ] It shall be covered with at least 80% of tests.
+    - [ ] It shall have options to create new servers.
+    - [ ] It shall have options to create new categories.
+    - [ ] It shall have options to create new channels.
+    - [ ] It shall be able to receive messages in real-time.
+    - [ ] It shall have a form of creating users and loging them.
+
+- Backend
+    - [ ] It shall be able to handle user creations.
+    - [ ] It shall be able to handle user login.
+    - [ ] It shall be able to handle messages through a websocket.
+    - [ ] It shall be able to save info about the user.
+    - [ ] It shall be able to save info about the servers.
+    - [ ] It shall be able to save info about the categories.
+    - [ ] It shall be able to save info about the channels.
+    - [ ] It shall be able to save messages per channel.
