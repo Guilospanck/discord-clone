@@ -57,7 +57,7 @@
     "html-webpack-plugin": "^5.1.0",
     "husky": "^7.0.2",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^27.5.1",
+    "jest": "^28.0.2",
     "lint-staged": "^12.4.0",
     "react-test-renderer": "^18.0.0",
     "style-loader": "^3.3.1",
