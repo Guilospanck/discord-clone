@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "react": "^18.1.0",
-    "react-dom": "^18.0.0",
+    "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
     "styled-components": "^5.3.1",
     "uuid": "^8.3.2"
@@ -32,7 +32,7 @@
     "@testing-library/user-event": "^14.1.1",
     "@types/jest": "^27.5.0",
     "@types/react": "^18.0.8",
-    "@types/react-dom": "^18.0.2",
+    "@types/react-dom": "^18.0.4",
     "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.25",
     "@types/uuid": "^8.3.4",
