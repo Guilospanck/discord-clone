@@ -42,7 +42,7 @@
     "babel-preset-env": "^1.7.0",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.1",
-    "dotenv-webpack": "^8.0.0",
+    "dotenv-webpack": "^8.0.1",
     "eslint": "^7.18.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.26.0",
