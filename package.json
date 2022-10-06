@@ -18,7 +18,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.1",
+    "react-router-dom": "^6.4.2",
     "styled-components": "^5.3.1",
     "uuid": "^9.0.0"
   },
@@ -38,7 +38,7 @@
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.39.0",
     "@typescript-eslint/parser": "^5.38.1",
-    "babel-jest": "^29.0.3",
+    "babel-jest": "^29.1.2",
     "babel-preset-env": "^1.7.0",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.1",
